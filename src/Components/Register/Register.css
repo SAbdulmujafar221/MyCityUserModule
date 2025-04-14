@@ -1,0 +1,423 @@
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+} */
+
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 60px;
+}
+
+.form-container {
+  background: #2a2a3a;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 75%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  max-width: 1200px;
+}
+
+.register-img {
+  flex: 1;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border-radius: 10px;
+}
+
+.error-message-phone {
+  color: red;
+  position: relative;
+  font-size: 14px;
+  top: 10px;
+
+  /* margin-top: 5px; */
+}
+
+.whole-container {
+  flex: 1;
+  width: 80%;
+  padding: 20px;
+}
+
+.Signin-title {
+  color: white;
+  text-align: left;
+  position: relative;
+  /* right: 50px; */
+  left: 150px;
+  top: 0px;
+  font-size: 3rem;
+}
+
+.changing-title{
+position: relative;
+right: 7px;
+font-size: 27px;
+}
+.subtitle {
+  color: #bbb;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.link {
+  color: #8b5cf6;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.form {
+  margin-top: 10px;
+  width: 85%;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  background: #333;
+  color: white;
+}
+
+.password-field {
+  position: relative;
+  padding-top: 10px;
+  width: 100%;
+}
+
+.password-toggle-icon {
+  position: absolute;
+  right: 10px;
+  top: 73%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #bbb;
+}
+
+/* ...existing code... */
+
+.input-field {
+  display: flex;
+  gap: 10px;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  /* width: 100%; */
+}
+
+.verify-btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background: #8b5cf6;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.verify-btn:hover {
+  background: #7c3aed;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background: #8b5cf6;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submit-btn:hover {
+  background: #7c3aed;
+}
+
+.social-login {
+  margin-top: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-text {
+  color: #bbb;
+  font-size: 0.9rem;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+.social-btn {
+  margin-top: 20px;
+}
+/* Customizing the phone input field */
+.react-tel-input {
+  width: 100%;
+}
+
+/* Styling the input box */
+.react-tel-input .form-control {
+  width: 100% !important;
+  height: 40px !important;
+  font-size: 16px !important;
+  border: 1px solid #444 !important;
+  border-radius: 5px !important;
+  background: #333 !important;
+  color: white !important;
+  /* padding-left: 50px; */
+}
+
+/* Placeholder color */
+.react-tel-input .form-control::placeholder {
+  color: #bbb !important;
+  font-size: 14px;
+}
+
+/* Styling the dropdown button */
+.react-tel-input .flag-dropdown {
+  background: #8b5cf6 !important;
+  border-radius: 5px 0 0 5px;
+  padding: 5px;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Make the flag icons visible */
+.react-tel-input .flag-dropdown .selected-flag {
+  display: flex;
+  align-items: center;
+  /* padding: 5px; */
+  border-radius: 5px 0 0 5px;
+}
+.react-tel-input ::-webkit-scrollbar{
+background-color:#2a2a3a ;
+color: red;
+}
+.react-tel-input::-webkit-inner-spin-button{
+  background-color: red;
+}
+
+/* Country dropdown list */
+.react-tel-input .country-list {
+  background: #2a2a3a !important;
+  color: white;
+  border-radius: 6px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  max-height: 200px;
+  margin-left: 252px;
+  margin-top: 250px;
+  overflow-y: auto;
+}
+
+/* Country dropdown items */
+.react-tel-input .country-list .country {
+  /* padding: 10px; */
+  font-size: 14px;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Hover effect */
+.react-tel-input .country-list .country:hover {
+  background-color: #8b5cf6;
+  color: white;
+  cursor: pointer;
+}
+
+/* Improve the visibility of country flags */
+.react-tel-input .country-list .country .flag {
+  width: 20px;
+  height: 15px;
+  border-radius: 3px;
+}
+
+/* Remove outline from the dropdown when clicked */
+.react-tel-input .flag-dropdown.open {
+  outline: none !important;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #444;
+  color: white;
+  font-size: 0.9rem;
+  transition: background 0.3s;
+}
+
+.login-container {
+  flex: 1;
+  width: 80%;
+  margin-right: 50px;
+}
+.social-btn:hover {
+  background: #555;
+}
+
+.icon {
+  width: 20px;
+}
+
+@media (max-width: 768px) {
+  .register-container {
+    padding-top: 20px;
+    flex-direction: column;
+  }
+
+  .form-container {
+    width: 95%;
+    height: auto;
+    gap: 20px;
+  }
+
+  .image-container {
+    width: 100%;
+  }
+}
+
+.forgot-password-link {
+  display: block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.forgot-password-link:hover {
+  text-decoration: underline;
+}
+
+.react-tel-input .form-control {
+  width: 100% !important;
+  height: 40px !important;
+  font-size: 16px !important;
+  border: 1px solid #444 !important;
+  border-radius: 5px !important;
+  background: #333 !important;
+}
+
+.react-tel-input .input::placeholder {
+  color: red !important;
+  font-size: 14px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.forgot-password {
+  color: #8b5cf6;
+  text-align: right;
+  font-size: 0.9rem;
+  cursor: pointer;
+  justify-content: center;
+  display: flex;
+  margin-top: 20px;
+}
+
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-container {
+  /* background: white; */
+  padding: 20px;
+  width: 90%;
+  border-radius: 10px;
+  position: relative;
+}
+
+.wrap-create{
+  display: flex;
+}
+/* .wrap-create p{
+
+  text-decoration: none;
+} */
+
+.Go-Home{
+  position: relative;
+  top: 10px;
+  left: 65px;
+  color: #7c3aed;
+}
+.Go-Home:hover{
+  color: #007bff;
+}
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #333;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.close-btn:hover {
+  color: #ff4d4d;
+  transform: scale(1.1);
+}
+
+.close-btn:focus {
+  outline: none;
+}

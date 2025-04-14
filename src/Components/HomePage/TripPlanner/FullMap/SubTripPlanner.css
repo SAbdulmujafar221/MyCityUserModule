@@ -1,0 +1,311 @@
+.tp-wrapper {
+  font-family: "Arial", sans-serif;
+  min-height: 100vh;
+  background-color: #f0f8ff;
+  margin: 0;
+  padding: 0;
+}
+
+.tp-wrapper .tp-main-container {
+  width: 110%;
+  height: 100vh;
+  z-index: 1;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding-top: 20px;
+  background-image: url("../TripPlannerImages/cards/BackgroundTripPlanner.png"); /* Replace with your image path */
+  background-size: cover; /* Ensures the image covers the entire main-container */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  position: relative; /* Added to allow absolute positioning of the button */
+}
+
+.tp-wrapper .tp-back-button {
+  position: absolute;
+  top: 137px;
+  left: 86px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  z-index: 10; /* Ensure it stays above other content */
+  transition: color 0.3s ease;
+}
+
+.tp-wrapper .tp-back-button:hover {
+  color: #3cb371; /* Medium sea green on hover */
+}
+
+.tp-wrapper .tp-back-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background-color: #f0f0f0; /* Light gray background for the circle */
+  border-radius: 50%;
+  font-size: 14px;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tp-dropdown .tp-back-icon1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 240px;
+  height: 240px;
+  background-color: #f0f0f0; /* Light gray background for the circle */
+  border-radius: 50%;
+  font-size: 14px;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tp-back-icon1 {
+  font-size: 20px;
+}
+
+.tp-dropdown .tp-back-icon2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 200px;
+  background-color: #f0f0f0; /* Light gray background for the circle */
+  border-radius: 50%;
+  font-size: 14px;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tp-wrapper .tp-back-button:hover .tp-back-icon {
+  background-color: #3cb371; /* Medium sea green on hover */
+  color: white;
+}
+
+.tp-wrapper .tp-container {
+  height: 66vh; /* Reduced from 50vh to 45vh */
+  margin-top: 137px;
+  margin-left: 265px;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 70px;
+  align-items: flex-start;
+  justify-content: center;
+  max-width: 1000px; /* Reduced from 1200px to 1000px */
+  padding-top: 72px; /* Kept the same to accommodate heading */
+  padding-bottom: 60px;
+  background-color: white; /* Reset to white or make transparent if needed */
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  position: relative; /* For absolute positioning of heading */
+}
+
+.tp-wrapper .tp-heading {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin: 0;
+  padding: 10px 0;
+  z-index: 10; /* Ensure it stays above other content */
+}
+
+.tp-wrapper .tp-left-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 400px;
+}
+
+.tp-wrapper .tp-dropdown {
+  width: 100%;
+  padding: 14px;
+  font: poppins;
+  font-size: 20px;
+  font-weight: 400;
+  color: #333;
+  border-radius: 10px;
+  box-shadow: #333;
+  position: relative;
+  left: 20px;
+  /* border: 1px solid #d1d1d1;
+  background-color: #f9f9f9; */
+  transition: all 0.3s ease;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.tp-wrapper .tp-dropdown:focus {
+  /* border-color: #3cb371; Medium sea green focus */
+  outline: none;
+}
+
+.tp-date-container {
+  display: flex;
+  gap: 60px;
+  border-color: red;
+}
+
+.tp-wrapper .tp-date-box {
+  display: flex;
+  flex-direction: column;
+  width: 37%;
+}
+
+.tp-wrapper .tp-date-label {
+  font: poppins;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  color: #333;
+  position: relative;
+  left: 24px;
+}
+
+.tp-wrapper .tp-date-input {
+  width: 100%;
+  padding: 20px;
+  /* font: poppins; */
+  font-size: 20px;
+  /* font-weight: 400; */
+  color: #333;
+  border-radius: 10px;
+  /* border: 1px solid #d1d1d1;
+  background-color: #f9f9f9; */
+  border-color: #333 !important;
+  border-width: 1px !important;
+  transition: all 0.3s ease;
+  position: relative;
+  left: 23px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.35);
+}
+
+.tp-wrapper .tp-date-input:focus {
+  /* border-color: #3cb371; Medium sea green focus */
+  outline: none;
+}
+
+.tp-wrapper .tp-trip-button {
+  background: #3cb371; /* Medium sea green button */
+  color: white;
+  padding: 13px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 40%;
+  position: relative;
+  left: 27px;
+  margin-top: 25px;
+  transition: background 0.3s ease;
+}
+
+.tp-wrapper .tp-trip-button:hover:not(:disabled) {
+  background: #2e8b57; /* Darker sea green on hover */
+}
+
+.tp-wrapper .tp-trip-button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+.tp-wrapper .tp-images-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tp-wrapper .tp-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.tp-wrapper .tp-image:hover {
+  transform: scale(1.05);
+}
+
+.tp-wrapper .tp-map-container {
+  width: 500px;
+  height: 350px;
+  background-color: #e0f2f7; /* Light cyan map background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* MapComponent styles */
+.tp-map-section {
+  margin-top: 50px;
+  padding-bottom: 50px;
+}
+
+.tp-map-component .tp-map-container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.tp-map-component .tp-leaflet-map {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.tp-map-component .tp-category-list {
+  position: absolute;
+  top: 200px;
+  right: 50px;
+  padding: 50px;
+  background-color: transparent;
+  z-index: 10;
+  width: 190px;
+  gap: 60px;
+}
+
+.tp-map-component .tp-category-list ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tp-map-component .tp-category-list li {
+  cursor: pointer;
+  margin-bottom: 8px;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 50px;
+}
+
+.tp-map-component .tp-category-icon {
+  width: 30px;
+  height: 20px;
+}
+
+.tp-map-component .tp-category-list li.active {
+  font-weight: bold;
+}

@@ -1,0 +1,55 @@
+.map-container {
+    position: relative;
+    height: 100vh;
+    bottom: 90px;
+    width: 100%;
+    overflow: hidden;
+  }
+   
+  .leaflet-map {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+   
+  .category-list {
+    position: absolute;
+    top: 200px;
+    right: 50px;
+    padding: 1px;
+    background-color: transparent;
+    z-index: 10;
+    width: 190px;
+    gap: 60px;
+  }
+   
+  .category-list ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+   
+  .category-list li {
+    cursor: pointer;
+    margin-bottom: 8px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 50px;
+  }
+   
+  .category-icon {
+    width: 30px;
+    height: 20px;
+  }
+   
+  .category-list li.active {
+    font-weight: bold;
+  }

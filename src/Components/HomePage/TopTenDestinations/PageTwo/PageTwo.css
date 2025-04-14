@@ -1,0 +1,148 @@
+.top-ten-destinations {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  gap: 50px;
+  z-index: 1;
+}
+
+.ten-destinations-heading {
+  position: relative;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0%;
+  padding: 10px;
+  color: #5a7dfd;
+  z-index: 5;
+  
+}
+
+/* --------naviagtion styling-------- */
+.slider-navigation {
+  position: relative;
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+  width: 100%;
+  max-width: 1160px;
+  z-index: 5;
+  
+}
+
+.slider-navigation button {
+  width: 37.5px;
+  height: 37.5px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: 0.3s;
+  color: #666666;
+  border: 1.5px solid #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-navigation button:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+/*------- image conatiner styling -------*/
+.page-two-slider-container {
+  position: relative;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.page-two-image-wrapper {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  height: 370px;
+  gap: 5px;
+  
+}
+
+.page-two-image-container {
+  position: relative;
+  z-index: 5;
+  flex: 1;
+  transition: all 1s ease-in-out;
+  
+}
+
+.page-two-image-container img {
+  
+  max-width: 473px;
+  height: 370px;
+  border-radius: 20px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.image-container:first-child {
+  position: relative;
+  z-index: 9;
+}
+
+.page-two-slider-image.first-image {
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+.image-container:first-child.active .page-two-slider-image {
+  transition: all 0.5s ease-out;
+}
+
+.page-two-slider-image.active {
+ 
+  flex: 2;
+  transition: all 5s ease-in-out ;
+}
+
+.page-two-slider-image.inactive {
+  width: 100%;
+}
+
+.image-container .image-text {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 18px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 5;
+}
+
+.image.active .image-text {
+  opacity: 1;
+}
+
+/* moving image */
+
+.moving-container {
+  position: fixed;
+  top: 293px;
+  right: 350px;
+  z-index: 5;
+}
+
+.moving-image {
+  position: relative;
+  width: 473px;
+  height: 370px;
+  transition: transform 0.5s ease-out; /* Smooth movement */
+  border-radius: 20px;
+}

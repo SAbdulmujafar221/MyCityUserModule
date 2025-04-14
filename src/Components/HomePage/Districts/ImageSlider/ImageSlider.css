@@ -1,0 +1,67 @@
+/* src/styles/ImageSlider.css */
+
+.district-slider-container {
+  width: 100%;
+  position: relative;
+  top: 10px;
+  height: 300px;
+
+  z-index: 5;
+}
+
+/* Slide Styling */
+
+.district-slide{
+  padding: 10px;
+}
+.district-image-slider {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.image:hover {
+  transform: scale(1.05);
+}
+
+/* Custom Arrows on Top-Right */
+.custom-arrows {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+  z-index: 5;
+}
+
+/* Arrow Buttons */
+.arrow-btn {
+  background-color: #ff6b6b;
+  border: none;
+  color: white;
+  width: 50px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+  display: flex;
+  /* margin: 20px; */
+  margin-top: -50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrow-btn:hover {
+  background-color: #ff3f3f;
+}
+
+/* Left and Right Arrow Spacing */
+.left-btn {
+  left: 10px;
+}
+
+.right-btn {
+  right: 10px;
+}

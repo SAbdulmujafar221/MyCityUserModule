@@ -1,0 +1,27 @@
+.section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-in-out;
+  }
+  
+  /* Hidden by default */
+  .hidden {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  
+  /* Animations when visible */
+  .animate-about,
+  .animate-services,
+  .animate-portfolio,
+  .animate-team,
+  .animate-testimonials,
+  .animate-contact {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  

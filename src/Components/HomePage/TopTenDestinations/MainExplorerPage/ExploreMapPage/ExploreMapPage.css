@@ -1,0 +1,114 @@
+/* MapImageComponent.css */
+ 
+.main-container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+ 
+.left-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+ 
+.left-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+ 
+.right-container {
+    width: 50%;
+}
+ 
+.leaflet-container {
+    height: 100%;
+    width: 100%;
+}
+ 
+.map-overlay {
+    position: absolute;
+    top: 30;
+    right: 0;
+    width: 600px;
+    margin: 20px;
+    height: 500px;
+    overflow: hidden;
+}
+ 
+ 
+ 
+ 
+/* .............. */
+ 
+/* ImageContentOverlay.css */
+ 
+/* Explore-maps.css */
+ 
+.overlay-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+ 
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+ 
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+ 
+/* This styles the text box */
+.content-overlay {
+    width: 400px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 40px;
+    flex-direction: column;
+    position: absolute;
+    top: 150px; /* Adjust to position vertically */
+    left: 50px; /* Adjust to position horizontally */
+    padding: 20px;
+    border-radius: 8px;
+    
+}
+ 
+.content-overlay h1 {
+    color: #8B5CF6;
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 36px;
+}
+
+.content-overlay h2{
+    color: #666666;
+    font-weight: 700;
+    font-size: 36px;
+}
+ 
+.content-overlay p {
+    color: #666666;
+    line-height: 1.6;
+    font-size: 24px;
+    font-weight: 600;
+}
+ 
+.book-btn{
+    border: none;
+    border-radius: 25px;
+    background-color: #8B5CF6;
+    color: white;
+    width: 185px;
+    height: 70px;
+    cursor: pointer;
+}
+ 
+ 

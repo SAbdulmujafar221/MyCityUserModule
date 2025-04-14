@@ -1,0 +1,59 @@
+.cab-page{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to right, #6f42c1 50%, #ffffff 50%);
+  }
+  
+  
+  
+  .cab-selection-image {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+  }
+  
+  .vehicle-card {
+    background-color: white;
+    border-radius: 20px;
+    width: 300px;
+    height: 212px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .vehicle-card h3 {
+    font-size: 24px;
+    color: rgba(102, 102, 102, 1);
+  }
+  
+  .selected-card {
+    background-color: #6f42c1;
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .selected-card h3 {
+    color: white; /* White text when selected */
+  }
+  
+  
+  .cab-selection-img {
+    max-width: 300px;
+    height: 200px;
+  }
+  
+  .cab-page-top-section {
+    display: flex;
+  }
+  
+  .cab-section-from-and-to {
+    flex: 1;
+  }
+  

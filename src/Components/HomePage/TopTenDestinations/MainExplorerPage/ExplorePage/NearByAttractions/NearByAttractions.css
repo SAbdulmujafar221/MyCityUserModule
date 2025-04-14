@@ -1,0 +1,81 @@
+.NearByAttraction-container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    object-fit: cover;
+    
+    
+  }
+  
+  .NearbyAttractionBack{
+    width: 100%;
+  }
+  
+  .Explore-slider-container {
+    
+    position: absolute;
+    width: 50%;
+    height: 660px;
+    padding: 40px 0;
+    overflow: hidden;
+    right: 0;
+    top: 40vh;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+  }
+  
+  .Explore-intro-heading{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .explore-intro-dot{
+    border: 10px solid #8b5cf6 ;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  
+  .Explore-intro{
+    color: #8b5cf6;
+  }
+  
+  .Explore-custom-navigation{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding-left: 30px;
+    gap: 40px;
+  }
+  
+  .Explore-custom-navigation p{
+    border: 3px solid grey;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .explore-near-slide{
+    width: 640px;
+    height: 230px;
+  }
+  
+  .explore-slide-image {
+    width: 320px;
+    height: 230px;
+    margin: 0px 10px;
+    border-radius: 25px;
+    object-fit: cover;
+  }
+  

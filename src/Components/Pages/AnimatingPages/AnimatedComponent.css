@@ -1,0 +1,12 @@
+.component-wrapper {
+    opacity: 1; 
+  }
+  
+  .hidden {
+    display: none; 
+  }
+  
+  .visible {
+    display: block; 
+  }
+  
