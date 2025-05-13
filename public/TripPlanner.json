@@ -1,0 +1,48 @@
+{
+    "categories": [
+        { "name": "Beaches", "icon": "./assets/CategoriesImages/Beaches.png" },
+        { "name": "Religious Sites", "icon": "./images/Religous Site.png" },
+        { "name": "Flora Fauna", "icon": "./images/Floura Fauna.png" },
+        { "name": "Museum", "icon": "./images/Museum.png" },
+        { "name": "Buddhist Sites", "icon": "./images/Buddhist Sites.png" },
+        { "name": "Weekend Getaways", "icon": "./images/Weekend Gateways.png" }
+    ],
+    "places": [
+       
+        { "id": 1, "name": "Visakhapatnam Beach", "description": "Beautiful beach", "latitude": 17.6868, "longitude": 83.2185, "category": "Beaches" },
+        { "id": 2, "name": "Ramakrishna Beach", "description": "Popular beach", "latitude": 17.7175, "longitude": 83.3166, "category": "Beaches" },
+        { "id": 3, "name": "Rushikonda Beach", "description": "Scenic beach", "latitude": 17.7569, "longitude": 83.3785, "category": "Beaches" },
+        { "id": 4, "name": "Bheemunipatnam Beach", "description": "Quiet beach", "latitude": 17.8905, "longitude": 83.4529, "category": "Beaches" },
+ 
+       
+        { "id": 5, "name": "Tirupati Temple", "description": "Famous temple", "latitude": 13.6288, "longitude": 79.4192, "category": "Religious Sites" },
+        { "id": 6, "name": "Srisailam Temple", "description": "Historic temple", "latitude": 16.0729, "longitude": 78.8685, "category": "Religious Sites" },
+        { "id": 7, "name": "Kanaka Durga Temple", "description": "Beautiful hill temple", "latitude": 16.5097, "longitude": 80.6202, "category": "Religious Sites" },
+        { "id": 8, "name": "Simhachalam Temple", "description": "Ancient temple", "latitude": 17.7785, "longitude": 83.2336, "category": "Religious Sites" },
+ 
+       
+        { "id": 9, "name": "Nagarjuna Sagar", "description": "Scenic place", "latitude": 16.5204, "longitude": 79.2770, "category": "Flora Fauna" },
+        { "id": 10, "name": "Kambalakonda Wildlife Sanctuary", "description": "Wildlife sanctuary", "latitude": 17.7892, "longitude": 83.3023, "category": "Flora Fauna" },
+        { "id": 11, "name": "Coringa Wildlife Sanctuary", "description": "Mangrove forest", "latitude": 16.7954, "longitude": 82.2366, "category": "Flora Fauna" },
+        { "id": 12, "name": "Papikondalu", "description": "Hilly terrain", "latitude": 17.3056, "longitude": 81.7328, "category": "Flora Fauna" },
+ 
+       
+        { "id": 13, "name": "Amaravati Museum", "description": "Ancient museum", "latitude": 16.5414, "longitude": 80.5150, "category": "Museum" },
+        { "id": 14, "name": "Visakha Museum", "description": "Historical museum", "latitude": 17.7181, "longitude": 83.3333, "category": "Museum" },
+        { "id": 15, "name": "Kondapalli Fort Museum", "description": "Famous fort museum", "latitude": 16.6666, "longitude": 80.5500, "category": "Museum" },
+        { "id": 16, "name": "Kuchipudi Museum", "description": "Dance history museum", "latitude": 16.1844, "longitude": 80.8530, "category": "Museum" },
+ 
+       
+        { "id": 17, "name": "Bavikonda", "description": "Buddhist site", "latitude": 17.7636, "longitude": 83.2396, "category": "Buddhist Sites" },
+        { "id": 18, "name": "Thotlakonda", "description": "Ancient Buddhist site", "latitude": 17.8157, "longitude": 83.3832, "category": "Buddhist Sites" },
+        { "id": 19, "name": "Amaravati Stupa", "description": "Buddhist stupa", "latitude": 16.5730, "longitude": 80.3560, "category": "Buddhist Sites" },
+        { "id": 20, "name": "Sankaram", "description": "Buddhist site with stupas", "latitude": 17.7234, "longitude": 83.0104, "category": "Buddhist Sites" },
+ 
+       
+        { "id": 21, "name": "Horsley Hills", "description": "Weekend getaway", "latitude": 13.6624, "longitude": 78.4121, "category": "Weekend Getaways" },
+        { "id": 22, "name": "Araku Valley", "description": "Scenic hill station", "latitude": 18.3333, "longitude": 82.8667, "category": "Weekend Getaways" },
+        { "id": 23, "name": "Lambasingi", "description": "Chilly retreat", "latitude": 17.8500, "longitude": 82.5833, "category": "Weekend Getaways" },
+        { "id": 24, "name": "Gandikota", "description": "Grand canyon of India", "latitude": 14.8154, "longitude": 78.2820, "category": "Weekend Getaways" }
+    ]
+}
+ 

@@ -1,0 +1,534 @@
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+} */
+
+.tourism-module-register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30px;
+  width: 100%;
+  height: auto;
+}
+
+.tourism-module-form-container {
+  background: #2a2a3a;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 80%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  max-width: 1200px;
+}
+
+/* Existing styles for react-tel-input */
+.tourism-module-react-tel-input {
+  width: 100%;
+}
+
+.tourism-module-react-tel-input .tourism-module-form-control {
+  width: 100% !important;
+  height: 40px !important;
+  font-size: 16px !important;
+  border: 1px solid #444 !important;
+  border-radius: 5px !important;
+  background: #333 !important;
+  color: white !important;
+}
+
+/* New styles for tourism-module-phone-input */
+.tourism-module-phone-input {
+  width: 100%;
+  height: 45px;
+}
+
+.tourism-module-phone-input .form-control {
+  padding-left: 50px !important;
+  border: 1px solid #444 !important;
+  border-radius: 5px !important;
+  font-size: 16px !important;
+  background-color: #333 !important;
+  width: 100% !important;
+  color: white !important;
+  margin: 10px 0;
+  height: 45px;
+}
+
+/* Placeholder color */
+.tourism-module-phone-input .form-control::placeholder {
+  color: #bbb !important;
+  font-size: 10px !important;
+}
+
+/* Styling the dropdown button */
+.tourism-module-phone-input .flag-dropdown {
+  background: #8b5cf6 !important;
+  border-radius: 5px 0 0 5px !important;
+  padding: 5px !important;
+  border: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Make the flag icons visible */
+.tourism-module-phone-input .flag-dropdown .selected-flag {
+  display: flex;
+  align-items: center;
+  border-radius: 5px 0 0 5px;
+}
+
+/* Country dropdown list */
+.tourism-module-phone-input .country-list {
+  background: #2a2a3a !important;
+  color: white !important;
+  border-radius: 6px !important;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2) !important;
+  max-height: 200px !important;
+  margin-left: 252px !important;
+  margin-top: 250px !important;
+  overflow-y: auto !important;
+}
+
+/* Country dropdown items */
+.tourism-module-phone-input .country-list .country {
+  font-size: 14px !important;
+  transition: background 0.3s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+/* Hover effect */
+.tourism-module-phone-input .country-list .country:hover {
+  background-color: #8b5cf6 !important;
+  color: white !important;
+  cursor: pointer !important;
+}
+
+/* Improve the visibility of country flags */
+.tourism-module-phone-input .country-list .country .flag {
+  width: 20px !important;
+  height: 15px !important;
+  border-radius: 3px !important;
+}
+
+/* Remove outline from the dropdown when clicked */
+.tourism-module-phone-input .flag-dropdown.open {
+  outline: none !important;
+}
+
+.tourism-module-register-img {
+  border-radius: 10px;
+  flex: 1;
+  height: auto;
+  
+  padding: 20px;
+}
+
+.tourism-module-image {
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.tourism-module-phone-input {
+  background-color: #2a2a3a;
+}
+
+.tourism-module-error-message-phone {
+  color: red;
+  position: relative;
+  font-size: 14px;
+  top: 10px;
+}
+
+.tourism-module-whole-container {
+  flex: 1;
+  width: 80%;
+  padding: 20px;
+}
+
+.tourism-module-Signin-title {
+  color: white;
+  text-align: left;
+  position: relative;
+  left: 150px;
+  top: 0px;
+  font-size: 3rem;
+}
+
+.tourism-module-changing-title {
+  position: relative;
+  right: 7px;
+  font-size: 27px;
+}
+
+.tourism-module-subtitle {
+  color: #bbb;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.tourism-module-link {
+  color: #8b5cf6;
+  cursor: pointer;
+  text-decoration: none;
+  padding-left: 10px;
+}
+
+.tourism-module-link:hover{
+  color: #e0d8ef;
+}
+
+.tourism-module-form {
+  margin-top: 10px;
+  width: 85%;
+}
+
+.tourism-module-input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  background: #333;
+  color: white;
+}
+
+.tourism-module-password-field {
+  position: relative;
+  padding-top: 10px;
+  width: 100%;
+}
+
+.tourism-module-password-toggle-icon {
+  position: absolute;
+  right: 10px;
+  top: 73%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #bbb;
+}
+
+.tourism-module-input-field {
+  display: flex;
+  gap: 10px;
+}
+
+.tourism-module-input-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.tourism-module-verify-btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background: #8b5cf6;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.tourism-module-verify-btn:hover was:hover {
+  background: #7c3aed;
+}
+
+.tourism-module-submit-btn {
+  width: 100%;
+  padding: 12px;
+  background: #8b5cf6;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.tourism-module-submit-btn:hover {
+  background: #7c3aed;
+}
+
+.tourism-module-show-password-toggle-icon{
+  position: absolute;
+  top: 65%;
+  right: 190px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #bbb;
+}
+
+.tourism-module-social-login {
+  margin-top: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tourism-module-social-text {
+  color: #bbb;
+  font-size: 0.9rem;
+}
+
+.tourism-module-social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.tourism-module-social-btn {
+  margin-top: 20px;
+}
+
+.tourism-module-react-tel-input {
+  width: 100%;
+}
+
+.tourism-module-react-tel-input .tourism-module-form-control {
+  width: 100% !important;
+  height: 40px !important;
+  font-size: 16px !important;
+  border: 1px solid #444 !important;
+  border-radius: 5px !important;
+  background: #333 !important;
+  color: white !important;
+}
+
+.tourism-module-react-tel-input .tourism-module-form-control::placeholder {
+  color: #bbb !important;
+  font-size: 14px;
+}
+
+.tourism-module-react-tel-input .tourism-module-flag-dropdown {
+  background: #8b5cf6 !important;
+  border-radius: 5px 0 0 5px;
+  padding: 5px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tourism-module-react-tel-input
+  .tourism-module-flag-dropdown
+  .tourism-module-selected-flag {
+  display: flex;
+  align-items: center;
+  border-radius: 5px 0 0 5px;
+}
+
+.tourism-module-react-tel-input::-webkit-scrollbar {
+  background-color: #2a2a3a;
+  color: red;
+}
+
+.tourism-module-react-tel-input::-webkit-inner-spin-button {
+  background-color: red;
+}
+
+.tourism-module-react-tel-input .tourism-module-country-list {
+  background: #2a2a3a !important;
+  color: white;
+  border-radius: 6px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  max-height: 200px;
+  margin-left: 252px;
+  margin-top: 250px;
+  overflow-y: auto;
+}
+
+.tourism-module-react-tel-input
+  .tourism-module-country-list
+  .tourism-module-country {
+  font-size: 14px;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tourism-module-react-tel-input
+  .tourism-module-country-list
+  .tourism-module-country:hover {
+  background-color: #8b5cf6;
+  color: white;
+  cursor: pointer;
+}
+
+.tourism-module-react-tel-input
+  .tourism-module-country-list
+  .tourism-module-country
+  .tourism-module-flag {
+  width: 20px;
+  height: 15px;
+  border-radius: 3px;
+}
+
+.tourism-module-react-tel-input
+  .tourism-module-flag-dropdown.tourism-module-open {
+  outline: none !important;
+}
+
+.tourism-module-social-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #444;
+  color: white;
+  font-size: 0.9rem;
+  transition: background 0.3s;
+}
+
+.tourism-module-login-container {
+  flex: 1;
+  width: 80%;
+  margin-right: 50px;
+}
+
+.tourism-module-social-btn:hover {
+  background: #555;
+}
+
+.tourism-module-icon {
+  width: 20px;
+}
+
+@media (max-width: 768px) {
+  .tourism-module-register-container {
+    padding-top: 20px;
+    flex-direction: column;
+  }
+
+  .tourism-module-form-container {
+    width: 95%;
+    height: auto;
+    gap: 20px;
+  }
+
+  .tourism-module-image-container {
+    width: 100%;
+  }
+}
+
+.tourism-module-forgot-password-link {
+  display: block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.tourism-module-forgot-password-link:hover {
+  text-decoration: underline;
+  color: #e0d8ef;
+}
+
+.tourism-module-react-tel-input .tourism-module-form-control {
+  width: 100% !important;
+  height: 40px !important;
+  font-size: 16px !important;
+  border: 1px solid #444 !important;
+  border-radius: 5px !important;
+  background: #333 !important;
+}
+
+.tourism-module-react-tel-input .tourism-module-input::placeholder {
+  color: red !important;
+  font-size: 14px;
+}
+
+.tourism-module-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.tourism-module-forgot-password {
+  color: #8b5cf6;
+  text-align: right;
+  font-size: 0.9rem;
+  cursor: pointer;
+  justify-content: center;
+  display: flex;
+  margin-top: 20px;
+}
+
+.tourism-module-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.tourism-module-modal-container {
+  padding: 20px;
+  width: 90%;
+  border-radius: 10px;
+  position: relative;
+}
+
+.tourism-module-wrap-create {
+  display: flex;
+}
+
+.tourism-module-Go-Home {
+  position: relative;
+  top: 10px;
+  left: 65px;
+  color: #7c3aed;
+}
+
+.tourism-module-Go-Home:hover {
+  color: #e0d8ef;
+}
+
+.tourism-module-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #333;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.tourism-module-close-btn:hover {
+  color: #ff4d4d;
+  transform: scale(1.1);
+}
+
+.tourism-module-close-btn:focus {
+  outline: none;
+}

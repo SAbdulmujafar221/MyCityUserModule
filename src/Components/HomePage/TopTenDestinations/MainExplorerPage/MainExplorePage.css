@@ -1,0 +1,63 @@
+/* ImageSlider.css */
+.main-explore-page-slider-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.main-explore-page-slide {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* .wrapping-in-one-unit{
+  position: relative;
+  bottom: 400px;
+} */
+.main-explore-page-image {
+  width: 100%;
+  height: 100vh;
+  object-fit: fill;
+  flex-shrink: 0;
+}
+
+.main-explore-page-name {
+  font-size: 105px;
+  font-weight: 400;
+  text-align: center;
+  font-family: "Lavishly Yours", cursive;
+  line-height: 100%;
+  position: relative;
+  top: -450px ;
+  color: white;
+}
+
+.main-explore-dots-container{
+  width: 100px;
+  height: 40px;
+  position: absolute;
+  bottom: 30px;
+  right: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  border-radius: 50%;
+  border: 5px solid rgb(254, 253, 253);
+  cursor: pointer;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  width: 25px;
+  height: 25px;
+}
+
+.dot.inactive {
+  width: 18px;
+  height: 18px;
+}

@@ -1,0 +1,160 @@
+.local-treasures-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 120px;
+  max-width: 100%;
+  height: 100%;
+  position: relative;
+  top: 100vh;
+  
+}
+.local-treasure-main-container{
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.local-treasures-left-section {
+  position: relative;
+  height: 536px;
+  overflow: hidden;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 40px;
+  margin-bottom: 40px;
+  flex: 1;
+}
+
+.local-treasures-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.local-treasures-left-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+
+.local-treasures-left-content h4 {
+  font-size: 1rem;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.local-treasures-left-content h2 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+
+.local-treasures-right-section {
+  max-width: 50%;
+  z-index: 2;
+  flex: 1;
+  height: 80vh;
+}
+.local-treasures-right-slider {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-start;
+  padding: 0 10px;
+}
+
+.local-treasures-slider-card {
+  height: 80vh;
+  border-radius: 12px;
+  text-align: center;
+  background: transparent;
+  overflow: hidden;
+  position: relative;
+  padding: 0px 10px;
+  margin-right: 20px; /* spacing between cards */
+}
+
+.image-mask-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.image-mask-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.image-gradient-mask {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  z-index: 11;
+}
+
+.local-treasures-card-content {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  z-index: 20;
+  text-align: left;
+}
+
+
+.local-treasures-button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+  
+}
+
+.local-treasures-button-container button{
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.slider-indicator-wrapper {
+  
+  position: relative;
+  width: 100%;
+  height: 10px;
+  background-color: #d9d9d9;
+  border-radius: 2px;
+}
+
+.slider-track {
+  position: relative;
+  height: 100%;
+  width: 100%;
+ 
+}
+
+.slider-thumb {
+  position: absolute;
+  width: 30%;
+  height: 10px;
+  border-radius: 2px;
+  background-color: #666666;
+  transition: left 0.3s ease-in-out;
+}
+

@@ -1,0 +1,73 @@
+.full-page {
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: absolute;
+    top: 100vh;
+  }
+   
+  .dotted-line-horizontal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    padding: 0 20px;
+    justify-content: center;
+  }
+   
+  .dot-wrapper-horizontal {
+    position: relative;
+    width: 50px;      
+    height: 3px;      
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+   
+  .dot-base-horizontal {
+    width: 100%;
+    height: 100%;
+    background-color: #c3baba75;
+    border-radius: 4px;
+  }
+   
+  .dot-fill-horizontal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #8b5cf6;
+    border-radius: 4px;
+    width: 0%;
+  }
+   
+   
+  .fill-right {
+    animation: fillRight 0.4s forwards;
+  }
+   
+  .empty-left {
+    animation: emptyLeft 0.4s forwards;
+  }
+   
+  @keyframes fillRight {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+   
+  @keyframes emptyLeft {
+    from {
+      width: 100%;
+    }
+    to {
+      width: 0%;
+    }
+  }

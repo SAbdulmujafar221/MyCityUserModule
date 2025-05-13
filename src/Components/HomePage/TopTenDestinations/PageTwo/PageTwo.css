@@ -1,0 +1,144 @@
+.top-ten-destinations {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  min-height: 100vh; /* Changed from height: 100vh */
+  overflow: hidden;
+  gap: 50px;
+  z-index: 1;
+  position: relative;
+  top: 100vh;
+  width: "100%";
+  
+}
+
+.tourism-module-background{
+  position: fixed;
+  z-index: -990;
+}
+
+.tourism-background-image{
+  position: fixed;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.4;
+  z-index: -990;
+}
+
+.ten-destinations-heading {
+  font-size: 32px;
+  font-weight: 700;
+  color: #666;
+  z-index: 5;
+  position: relative;
+  top: 90px;
+  left: 100px;
+ 
+  width: 100%;
+}
+
+.slider-navigation {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  width: 100%;
+  max-width: 1160px;
+  z-index: 5;
+  position: relative;
+  width: 100%;
+  right: 60px;
+}
+
+.slider-navigation button {
+  width: 37.5px;
+  height: 37.5px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1.5px solid #666;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.slider-navigation button:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.arrow {
+  font-size: 14px;
+  color: #666;
+}
+
+.page-two-slider-container {
+  width: 84%;
+  max-width: 1160px;
+  display: flex;
+  justify-content: center;
+}
+
+.page-two-image-wrapper {
+  display: flex;
+  width: 100%;
+  height: 370px;
+  gap: 5px;
+}
+
+.page-two-image-container {
+  position: relative;
+
+  border-radius: 20px;
+}
+
+.page-two-slider-image {
+  width: 100%;
+  height: 370px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.page-two-slider-image.inactive {
+  width: 100%;
+}
+
+.page-two-image-container.active {
+  width: 100%;
+}
+
+.top-image-text {
+  position: relative;
+  bottom: 40px;
+  left: 10px;
+  color: white;
+  padding: 5px 10px;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 5;
+  
+}
+
+.top-ten-bg-section {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  opacity: 0.5;
+  z-index: -10;
+}
+
+.top-ten-bg-section img{
+  width: 100%;
+}
+
+.ten-destinations-heading span{
+  color: #000;
+}

@@ -1,0 +1,44 @@
+.dotted-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 20px 0;
+  }
+ 
+  .dot-wrapper {
+    position: relative;
+    width: 4px;
+    height: 10px;
+    overflow: hidden;
+  }
+ 
+  .dot-base {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 2px;
+  }
+ 
+  .dot-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #8b5cf6;
+    border-radius: 2px;
+    height: 0%;
+  }
+ 
+  .fill-down {
+    animation: fillDown 0.4s forwards;
+  }
+ 
+  @keyframes fillDown {
+    from {
+      height: 0%;
+    }
+    to {
+      height: 100%;
+    }
+  }
