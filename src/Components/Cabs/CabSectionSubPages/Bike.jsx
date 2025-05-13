@@ -49,7 +49,7 @@ const Bike = () => {
               <img src={car.img} alt={car.name} className="cab-book-car-image" />
               <p className="people-count">👥 {car.people} people</p>
               <div className="cab-book-details">
-                <p className="cab-book-price">₹{car.price}/day</p>
+                <p className="cab-book-price">₹{car.price}/<span className="cab-book-day-text">day</span></p>
                 <button className="cab-book-btn">Book Now</button>
               </div>
             </div>

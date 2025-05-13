@@ -1,14 +1,19 @@
 .tp-wrapper {
   font-family: "Arial", sans-serif;
-  min-height: 100vh;
+  height: 100vh;
   background-color: #f0f8ff;
   margin: 0;
   padding: 0;
+  overflow: visible;
 }
-
+ .page-wrapper{
+  width: 99vw;
+  height: 100vh;
+  overflow: hidden;
+ }
 .tp-wrapper .tp-main-container {
   width: 110%;
-  height: 100vh;
+  height: 120vh;
   z-index: 1;
   max-width: 1600px;
   margin: 0 auto;
@@ -19,28 +24,28 @@
   background-repeat: no-repeat; /* Prevents the image from repeating */
   position: relative; /* Added to allow absolute positioning of the button */
 }
-
+ 
 .tp-wrapper .tp-back-button {
-  position: absolute;
-  top: 137px;
-  left: 86px;
+  position: fixed;
+  top: 107px;
+  left: 46px;
   display: flex;
   align-items: center;
   gap: 10px;
   background: none;
   border: none;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 500;
   color: white;
   cursor: pointer;
   z-index: 10; /* Ensure it stays above other content */
   transition: color 0.3s ease;
 }
-
+ 
 .tp-wrapper .tp-back-button:hover {
-  color: #3cb371; /* Medium sea green on hover */
+  color: #8b5cf6; /* Medium sea green on hover */
 }
-
+ 
 .tp-wrapper .tp-back-icon {
   display: flex;
   align-items: center;
@@ -53,7 +58,7 @@
   color: #333;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-
+ 
 .tp-dropdown .tp-back-icon1 {
   display: flex;
   align-items: center;
@@ -66,11 +71,11 @@
   color: #333;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-
+ 
 .tp-back-icon1 {
   font-size: 20px;
 }
-
+ 
 .tp-dropdown .tp-back-icon2 {
   display: flex;
   align-items: center;
@@ -83,33 +88,33 @@
   color: #333;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-
+ 
 .tp-wrapper .tp-back-button:hover .tp-back-icon {
-  background-color: #3cb371; /* Medium sea green on hover */
+  background-color: #8b5cf6; /* Medium sea green on hover */
   color: white;
 }
-
+ 
 .tp-wrapper .tp-container {
-  height: 66vh; /* Reduced from 50vh to 45vh */
-  margin-top: 137px;
-  margin-left: 265px;
+  height: 80vh; /* Reduced from 50vh to 45vh */
+  margin-top: 80px;
+  margin-left:120px;
   display: flex;
   flex-direction: row-reverse;
   gap: 70px;
   align-items: flex-start;
   justify-content: center;
   max-width: 1000px; /* Reduced from 1200px to 1000px */
-  padding-top: 72px; /* Kept the same to accommodate heading */
-  padding-bottom: 60px;
+  padding-top: 62px; /* Kept the same to accommodate heading */
+  padding-bottom: 40px;
   background-color: white; /* Reset to white or make transparent if needed */
   border-radius: 20px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   position: relative; /* For absolute positioning of heading */
 }
-
+ 
 .tp-wrapper .tp-heading {
   position: absolute;
-  top: 20px;
+  top:6px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 28px;
@@ -120,19 +125,19 @@
   padding: 10px 0;
   z-index: 10; /* Ensure it stays above other content */
 }
-
+ 
 .tp-wrapper .tp-left-section {
   display: flex;
   flex-direction: column;
   gap: 20px;
   width: 400px;
 }
-
+ 
 .tp-wrapper .tp-dropdown {
   width: 100%;
   padding: 14px;
   font: poppins;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
   color: #333;
   border-radius: 10px;
@@ -144,39 +149,39 @@
   transition: all 0.3s ease;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-
+ 
 .tp-wrapper .tp-dropdown:focus {
-  /* border-color: #3cb371; Medium sea green focus */
+  /* border-color: #8b5cf6; Medium sea green focus */
   outline: none;
 }
-
+ 
 .tp-date-container {
   display: flex;
   gap: 60px;
   border-color: red;
 }
-
+ 
 .tp-wrapper .tp-date-box {
   display: flex;
   flex-direction: column;
   width: 37%;
 }
-
+ 
 .tp-wrapper .tp-date-label {
   font: poppins;
-  font-size: 20px;
+  font-size:12px;
   font-weight: 400;
   margin-bottom: 10px;
   color: #333;
   position: relative;
   left: 24px;
 }
-
+ 
 .tp-wrapper .tp-date-input {
   width: 100%;
   padding: 20px;
   /* font: poppins; */
-  font-size: 20px;
+  font-size: 12px;
   /* font-weight: 400; */
   color: #333;
   border-radius: 10px;
@@ -189,14 +194,14 @@
   left: 23px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.35);
 }
-
+ 
 .tp-wrapper .tp-date-input:focus {
-  /* border-color: #3cb371; Medium sea green focus */
+  /* border-color: #8b5cf6; Medium sea green focus */
   outline: none;
 }
-
+ 
 .tp-wrapper .tp-trip-button {
-  background: #3cb371; /* Medium sea green button */
+  background: #8b5cf6; /* Medium sea green button */
   color: white;
   padding: 13px 20px;
   font-size: 18px;
@@ -209,22 +214,56 @@
   margin-top: 25px;
   transition: background 0.3s ease;
 }
-
+ 
 .tp-wrapper .tp-trip-button:hover:not(:disabled) {
-  background: #2e8b57; /* Darker sea green on hover */
+  /* Darker sea green on hover */
+box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2);
 }
-
+ 
 .tp-wrapper .tp-trip-button:disabled {
   background: #cccccc;
   cursor: not-allowed;
 }
-
+ 
 .tp-wrapper .tp-images-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+ 
 }
-
+ 
+.second-place-image-wrapper{
+  position: relative;
+  bottom: 40px;
+}
+.admin-tourism-list-rating-icon {
+  position: relative;
+  bottom: 198px;
+  left:294px;
+  width: 100px;
+  height: 46px;
+  background:#74D290;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+  bottom: 200px;
+  /* z-index: -1; */
+  cursor: pointer;
+}
+ 
+.place-name-wrapper h4{
+position: relative;
+font-size: 24px;
+left: 30px;
+color: white;
+bottom: 40px;
+}
+ 
 .tp-wrapper .tp-image {
   width: 100%;
   height: auto;
@@ -232,14 +271,14 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
 }
-
+ 
 .tp-wrapper .tp-image:hover {
   transform: scale(1.05);
 }
-
+ 
 .tp-wrapper .tp-map-container {
   width: 500px;
-  height: 350px;
+  height: 400px;
   background-color: #e0f2f7; /* Light cyan map background */
   display: flex;
   align-items: center;
@@ -248,20 +287,20 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
-
+ 
 /* MapComponent styles */
 .tp-map-section {
   margin-top: 50px;
   padding-bottom: 50px;
 }
-
+ 
 .tp-map-component .tp-map-container {
   position: relative;
   height: 100vh;
   width: 100%;
   overflow: hidden;
 }
-
+ 
 .tp-map-component .tp-leaflet-map {
   height: 100%;
   width: 100%;
@@ -270,7 +309,7 @@
   left: 0;
   z-index: 1;
 }
-
+ 
 .tp-map-component .tp-category-list {
   position: absolute;
   top: 200px;
@@ -281,13 +320,13 @@
   width: 190px;
   gap: 60px;
 }
-
+ 
 .tp-map-component .tp-category-list ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
-
+ 
 .tp-map-component .tp-category-list li {
   cursor: pointer;
   margin-bottom: 8px;
@@ -300,12 +339,13 @@
   padding: 10px;
   border-radius: 50px;
 }
-
+ 
 .tp-map-component .tp-category-icon {
   width: 30px;
   height: 20px;
 }
-
+ 
 .tp-map-component .tp-category-list li.active {
   font-weight: bold;
 }
+ 

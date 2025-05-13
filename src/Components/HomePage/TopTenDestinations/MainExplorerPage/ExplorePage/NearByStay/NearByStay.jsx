@@ -43,8 +43,9 @@ const NearByStay = () => {
 
       <div className="Explore-stay-slider-container ">
         <div className="Explore-intro-heading">
-          <div className="explore-intro-dot"></div>
+        <div className="explore-intro-dot"></div>
           <h2 className="Explore-intro">Near By Stays</h2>
+          
         </div>
         <div className="Explore-custom-navigation">
           <p

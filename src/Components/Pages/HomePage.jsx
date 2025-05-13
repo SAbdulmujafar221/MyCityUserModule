@@ -1,32 +1,34 @@
-import React, { useRef,useState } from "react";
-import StartingHomePage from "../HomePage/TopTenDestinations/PageTwo/MainPage";
+import React, { useRef, useState } from "react";
 
-import Spliting from "../HomePage/Spliting/ImageCards";
+
 import AndhraPradeshMap from "../HomePage/Districts/Districts";
 import TripPlanner from "../HomePage/TripPlanner/TripPlanner";
 import Carousel from "../HomePage/Events/Events";
 import VideoGallery from "../HomePage/VideoGallery/VideoGallery";
 import useOnScreen from "../CustomHooks/UseOnScreen";
-import Scroller from "../HomePage/Scroller/Scroller/Scroller";
+
+import PageTwo from "../HomePage/TopTenDestinations/PageTwo/PageTwo";
+import Categories from "../HomePage/Categories/Categories";
+import TourismHomePage from "../HomePage/TourismHomePage/TourismHomePage";
+import TripPlannerHomePage from "../HomePage/TripPlannerNew/TripPlannerNew";
+import Train from "../HomePage/TripPlannerNew/TripPlannerNew";
 
 const HomePage = () => {
   const aboutRef = useRef(null);
-const [completed, setcompleted] = useState(false)
+  const [completed, setcompleted] = useState(false);
 
   const isAboutVisible = useOnScreen(aboutRef, 0.5);
 
   return (
     <div className="app-container">
-      <div
-        ref={aboutRef}
-        className={`section ${isAboutVisible ? "animate-about" : "hidden"}`}
-      >
-        <StartingHomePage />
-      </div>
-      <Spliting />
-      <Scroller />
+      <TourismHomePage />
+
+      <PageTwo />
+
+      <Categories />
       <AndhraPradeshMap />
-      <TripPlanner />
+      {/* <TripPlanner /> */}
+      <Train />
       <Carousel />
       <VideoGallery />
     </div>

@@ -5,6 +5,8 @@ import * as topojson from "topojson-client";
 import { motion } from "framer-motion";
 import DistrictsImageSlider from "./ImageSlider/ImageSlider";
 import { Link } from "react-router-dom";
+import Line from "../../AnimatedLines/CurvyLine";
+import SLine from "../../AnimatedLines/StraightLine";
 const imageUrls = [
   "/images/image-1.jpg",
   "./assets/images/district-images/image-1.jpg",
@@ -56,22 +58,23 @@ const AndhraPradeshMap = () => {
           .attr("d", path)
           .attr("class", "district")
           .attr("fill", (d, i) =>
-            d === firstDistrict && fixColor ? "#8b5cf6" : "white"
+            d === firstDistrict && fixColor ? "#fff" : "#999"
           )
-          .attr("stroke", "#8b5cf6")
+          .attr("stroke", "#fff")
           .attr("stroke-width", 1)
           .on("mouseover", (event) => {
-            d3.select(event.target).style("fill", "#8b5cf6");
+            d3.select(event.target).style("fill", "#fff");
           })
           .on("mouseout", (event, d) => {
-            if (fixColor && d === firstDistrict){
+            if (fixColor && d === firstDistrict) {
               return d3.select(event.target).style("fill", "#8b5cf6");
             } else {
-              return d3.select(event.target).style("fill", "white");
+              return d3.select(event.target).style("fill", "#999");
             }
           })
           .on("click", (event, d) => {
             const selectedPath = d;
+            d3.select(event.target).style("fill", "#8b5cf6");
             const smallProjection = d3.geoMercator().fitSize([300, 300], {
               type: "FeatureCollection",
               features: [selectedPath],
@@ -96,62 +99,56 @@ const AndhraPradeshMap = () => {
 
   return (
     <>
-      <img
-        src="./assets/images/home-images/img3.jpg"
-        alt="India Map"
-        className="district-background-image"
-      />
-      <div className="district-container">
-        <div className="district-map-wrapper">
-          <svg id="ap-map" className="district-map"></svg>
+      <div className="districts-background">
+        <div>
+          <h1 className="district-title">Local Highlights</h1>
+        </div>
+        <div className="district-container">
+          <div className="event-local-treasures-overlay" />
+
+          <div className="district-map-wrapper">
+            <svg id="ap-map" className="district-map"></svg>
+          </div>
+
+          <SLine />
+          <div className="district-info-wrapper">
+            {selectedDistrict && (
+              <motion.div
+                initial={{ x: 300, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                className="district-info-card"
+              >
+                {/* Image on Top */}
+                <img
+                  src={`./assets/images/district-images/${
+                    selectedDistrict.NAME?.toLowerCase().replace(/\s+/g, "-") ||
+                    "default"
+                  }.jpg`}
+                  alt={selectedDistrict.NAME}
+                  className="district-top-image"
+                />
+
+                {/* Description */}
+                <div className="district-info-text big-description">
+                  <h2 className="district-name">{selectedDistrict.NAME}</h2>
+                  <p>
+                    {selectedDistrict.DESCRIPTION ||
+                      "This is a beautiful district in Andhra Pradesh, rich in culture, tradition, and natural beauty. More specific information will be available soon."}
+                  </p>
+                </div>
+                <Link to="/Districts">
+                  <div className="district-explore-button">
+                    <button>Explore</button>
+                  </div>
+                </Link>
+              </motion.div>
+            )}
+          </div>
         </div>
 
-        <div className="district-info-wrapper">
-          {selectedDistrict && (
-            <motion.div
-              initial={{ x: 300, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="district-info-card"
-            >
-              <h2 className="district-info-heading">
-                {selectedDistrict.NAME || "Unknown"}
-              </h2>
-              <svg className="district-info-svg">
-                {selectedDistrict.path ? (
-                  <path
-                    d={selectedDistrict.path}
-                    fill="#8b5cf6"
-                    stroke="black"
-                    strokeWidth="0.5"
-                  />
-                ) : (
-                  <text x="50%" y="50%" textAnchor="middle" fill="red">
-                    Invalid Path
-                  </text>
-                )}
-              </svg>
-              <div className="district-info-text">
-                <p>
-                  <strong>Capital:</strong>{" "}
-                  {selectedDistrict.CAPITAL || "Data Not Available"}
-                </p>
-                <p>
-                  <strong>Description:</strong>{" "}
-                  {selectedDistrict.DESCRIPTION || "N/A"}
-                </p>
-              </div>
-              <Link to="/MainExplorePlorer">
-                <button className="district-info-button">Explore</button>
-              </Link>
-            </motion.div>
-          )}
-        </div>
+        <DistrictsImageSlider />
       </div>
-      <DistrictsImageSlider />
-      {/* <div  className="district-slider-component">
-      
-      </div> */}
     </>
   );
 };

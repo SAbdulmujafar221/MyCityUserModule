@@ -6,9 +6,9 @@ const FullMap = () => {
   return (
     <div className="page-wrapper">
       <SubTripPlanner />
-      <div className="map-section">
+      {/* <div className="map-section">
         <SubMapComponent />
-      </div>
+      </div> */}
     </div>
   );
 };

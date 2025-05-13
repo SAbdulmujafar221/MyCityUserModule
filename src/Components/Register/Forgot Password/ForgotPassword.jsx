@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { CheckCircle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./ForgotPassword.css";
 
@@ -13,40 +14,11 @@ const ForgotPassword = () => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
+  const [emailMessage, setEmailMessage] = useState("");
+  const [otpMessage, setOtpMessage] = useState("");
+  const [passwordMessage, setPasswordMessage] = useState("");
   const [emailError, setEmailError] = useState("");
-
-  // const validateEmail = (e) => {
-  //   const emailValue = e.target.value;
-  //   setEmail(emailValue);
-  //   setEmailValid(/\S+@\S+\.\S+/.test(emailValue));
-  // };
-
-  const handleSendOtp = async (e) => {
-    e.preventDefault();
-    setShowOtpSection(true);
-    setLoading(true);
-    setMessage("");
-
-    try {
-      const response = await axios.post(
-        "https://854f-122-166-70-72.ngrok-free.app/otp/forgot-password",
-        null,
-        { params: { email } }
-      );
-
-      if (response.data.success) {
-        setOtpSent(true);
-        setMessage("OTP sent successfully!");
-      } else {
-        setMessage("Failed to send OTP.");
-      }
-    } catch (error) {
-      console.error("Error sending OTP:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const navigate = useNavigate();
 
   const validateEmail = (e) => {
     let emailValue = e.target.value.trim();
@@ -62,6 +34,57 @@ const ForgotPassword = () => {
     } else {
       setEmailError("");
       setEmailValid(true);
+    }
+  };
+
+  const handleVerifyEmailAndSendOtp = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setEmailMessage("");
+
+    try {
+      const verifyResponse = await axios.post(
+        "https://f5d5-122-166-70-72.ngrok-free.app/client/forgotpassword/initiate",
+        { email },
+        {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      );
+
+      if (
+        verifyResponse.status !== 200 ||
+        (verifyResponse.data.success === false || verifyResponse.data.emailExists === false)
+      ) {
+        setEmailMessage("Email is not registered.");
+        setLoading(false);
+        return;
+      }
+
+      const otpResponse = await axios.post(
+        "https://f5d5-122-166-70-72.ngrok-free.app/client/email/request-otp",
+        { email },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "true"
+          }
+        }
+      );
+
+      if (otpResponse.status === 200) {
+        setOtpSent(true);
+        setShowOtpSection(true);
+        setEmailMessage("OTP sent successfully!");
+      } else {
+        setEmailMessage("Failed to send OTP.");
+      }
+    } catch (error) {
+      console.error("Error verifying email or sending OTP:", error);
+      setEmailMessage("An error occurred. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -83,65 +106,67 @@ const ForgotPassword = () => {
 
   const handleVerifyOtp = async () => {
     if (otp.includes("")) {
-      setMessage("Please enter all OTP digits.");
+      setOtpMessage("Please enter all OTP digits.");
       return;
     }
 
     setLoading(true);
-    setMessage("");
+    setOtpMessage("");
 
     try {
+      const otpString = otp.join("");
+
       const response = await axios.post(
-        "https://854f-122-166-70-72.ngrok-free.app/otp/verify-otp",
-        null,
-        { params: { email, otp: otp.join("") } }
+        "https://f5d5-122-166-70-72.ngrok-free.app/client/email/verify-otp",
+        { email, otp: otpString },
+        { headers: { "Content-Type": "application/json" } }
       );
 
-      if (response.data.success) {
-        setIsOtpCorrect(false);
-        setMessage("OTP verified successfully");
-      } else {
+      if (response.status === 200) {
         setIsOtpCorrect(true);
-        setMessage("Invalid OTP. Please try again");
+        setOtpMessage("OTP verified successfully");
+      } else {
+        setIsOtpCorrect(false);
+        setOtpMessage("Invalid OTP. Please try again");
       }
     } catch (error) {
       console.error("Error verifying OTP:", error);
       setIsOtpCorrect(false);
-      setMessage("Unable to verify OTP");
+      setOtpMessage("Unable to verify OTP");
     } finally {
       setLoading(false);
     }
   };
 
-  // Reset Password
   const handleResetPassword = async () => {
     if (!isOtpCorrect) return;
 
     if (newPassword !== confirmPassword) {
-      setMessage("Passwords do not match!");
+      setPasswordMessage("Passwords do not match!");
       return;
     }
 
     setLoading(true);
-    setMessage("");
+    setPasswordMessage("");
 
     try {
       const response = await axios.post(
-        "https://854f-122-166-70-72.ngrok-free.app/otp/reset-password",
-        null,
-        {
-          params: { email, otp: otp.join(""), newPassword, confirmPassword },
-        }
+        "https://f5d5-122-166-70-72.ngrok-free.app/client/forgotpassword/reset",
+        { email ,newPassword },
+        { headers: { "Content-Type": "application/json" } },
       );
 
-      if (response.data.success) {
-        setMessage("Password reset successful");
+      if (response.status === 200) {
+        setPasswordMessage("Password reset successful");
+        setTimeout(() => {
+          navigate("/login");
+        }, 2000); // Navigate to login after 2 seconds
       } else {
-        setMessage("Error resetting password");
+        setPasswordMessage("Error resetting password");
       }
     } catch (error) {
       console.error("Error resetting password", error);
-      setMessage(" Unable to reset password");
+      setPasswordMessage("Unable to reset password");
     } finally {
       setLoading(false);
     }
@@ -167,12 +192,18 @@ const ForgotPassword = () => {
                 }
               }}
             />
+            {emailError && <p className="email-error">{emailError}</p>}
+            {emailMessage && (
+              <p className={emailMessage.includes("success") ? "success-message" : "error-message"}>
+                {emailMessage}
+              </p>
+            )}
           </div>
           <div>
             {emailValid && (
               <button
                 className="reset-btn-otp"
-                onClick={handleSendOtp}
+                onClick={handleVerifyEmailAndSendOtp}
                 disabled={loading}
               >
                 {loading ? "Sending OTP..." : "Send OTP"}
@@ -198,25 +229,25 @@ const ForgotPassword = () => {
                     />
                   ))}
                 </div>
+                {otpMessage && (
+                  <p className={otpMessage.includes("success") ? "success-message" : "error-message"}>
+                    {otpMessage} {otpMessage.includes("success") && <CheckCircle color="green" size={20} />}
+                  </p>
+                )}
               </div>
               <div>
                 <button
                   className="verify-btn full-width"
                   onClick={handleVerifyOtp}
+                  disabled={loading}
                 >
                   Verify OTP
                 </button>
               </div>
             </div>
-            {/* <p className="otp-label">Enter the 4-digit OTP</p> */}
           </>
         )}
-        {isOtpCorrect && (
-          <p className="success-message">
-            OTP Verified Successfully <CheckCircle color="green" size={20} />
-          </p>
-        )}
-        {message && <p className="message-text">{message}</p>}
+
         <div className="wrapping-password-container">
           <div>
             <input
@@ -225,9 +256,8 @@ const ForgotPassword = () => {
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value.trim())}
               className="input-field-password"
-              disabled={!email}
-          required
-              // see once  i changed    disabled={!isOtpCorrect}
+              disabled={!isOtpCorrect}
+              required
             />
           </div>
           <div>
@@ -237,12 +267,15 @@ const ForgotPassword = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value.trim())}
               className="input-field-confirm-password"
-              disabled={!newPassword}
+              disabled={!isOtpCorrect || !newPassword}
               required
-
-              // see once  i changed    disabled={!isOtpCorrect}
             />
           </div>
+          {passwordMessage && (
+            <p className={passwordMessage.includes("success") ? "success-message" : "error-message"}>
+              {passwordMessage} {passwordMessage.includes("success") && <CheckCircle color="green" size={20} />}
+            </p>
+          )}
         </div>
 
         <button

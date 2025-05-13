@@ -1,17 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import * as d3 from "d3";
 import * as topojson from "topojson-client";
 import { motion } from "framer-motion";
 import "./ExploreGalleyPage.css";
 import { GALLERY_IMAGE_SET } from "./GalleyImageSet";
+import { Upload } from "lucide-react";
+import { Link } from "react-router";
 
 const ExploreGalleryPage = () => {
   const [activeImages, setActiveImages] = useState(null);
   const [selectedDistrict, setSelectedDistrict] = useState(null);
-  const [districtName, setDistrictName] = useState( "");
-
+  const [districtName, setDistrictName] = useState("");
+  const [labelPosition, setLabelPosition] = useState(null);
   const [hasSelectedDefault, setHasSelectedDefault] = useState(false);
+  const textRef = useRef(null); // Ref to measure text dimensions
+  const [textDimensions, setTextDimensions] = useState({
+    width: 150,
+    height: 20,
+  });
 
+  // Function to select a district and update the map
   const selectDistrict = (district, svg, paths) => {
     svg.selectAll("path").style("fill", "white");
     paths
@@ -24,24 +32,30 @@ const ExploreGalleryPage = () => {
     );
 
     setActiveImages(matchedImages || GALLERY_IMAGE_SET[0]);
-    setSelectedDistrict({
-      ...district.properties,
-    });
+    setSelectedDistrict({ ...district.properties });
   };
+
+  // Calculate text dimensions dynamically
+  useEffect(() => {
+    if (textRef.current) {
+      const bbox = textRef.current.getBBox();
+      setTextDimensions({ width: bbox.width, height: bbox.height });
+    }
+  }, [districtName]);
 
   useEffect(() => {
     const width = 500;
     const height = 500;
 
     const svg = d3
-      .select("#ap-map")
+      .select("#map-paths")
       .attr("width", width)
       .attr("height", height);
 
     d3.json("/Districts.json")
       .then((data) => {
         const geojson = topojson.feature(data, data.objects.districts);
-        console.log("GeoJSON features:", geojson.features); // Debug GeoJSON data
+        console.log("GeoJSON features:", geojson.features);
 
         const projection = d3.geoMercator().fitSize([width, height], geojson);
         const path = d3.geoPath().projection(projection);
@@ -57,21 +71,26 @@ const ExploreGalleryPage = () => {
           .attr("stroke", "black")
           .attr("stroke-width", 1)
           .on("mouseover", (event, d) => {
+            const center = path.centroid(d);
+            setDistrictName(d.properties.NAME);
+            setLabelPosition({ x: center[0], y: center[1] });
             d3.select(event.target).style("fill", "#8b5cf6");
             d3.select(event.target).style("cursor", "pointer");
-
-             setDistrictName ( d.properties.NAME);
-
-            
-            console.log("present = " + districtName);
           })
           .on("mouseout", (event) => {
-            setDistrictName("");
             if (
               selectedDistrict?.CODE !==
               d3.select(event.target).datum().properties.CODE
             ) {
               d3.select(event.target).style("fill", "white");
+            }
+            // Only clear districtName and labelPosition if not selected
+            if (
+              selectedDistrict?.CODE !==
+              d3.select(event.target).datum().properties.CODE
+            ) {
+              setDistrictName("");
+              setLabelPosition(null);
             }
           })
           .on("click", (event, d) => {
@@ -94,19 +113,56 @@ const ExploreGalleryPage = () => {
         console.error("Error loading GeoJSON:", error);
         setActiveImages(GALLERY_IMAGE_SET[0]);
       });
-  }, [hasSelectedDefault]);
+  }, [hasSelectedDefault, selectedDistrict]);
 
   return (
     <div className="explore-gallery-container">
       <h1 className="explore-gallery-heading">Memories</h1>
+      <Link to="/Explore/Gallery/PhotoUpload">
+        <button className="explore-gallery-upload-button">
+          Upload <Upload />
+        </button>
+      </Link>
       <div className="gallery-map-image-wrapper">
         <div className="gallery-map-wrapper">
-          <svg id="ap-map" className="gallery-map"></svg>
+          <svg id="ap-map" className="gallery-map">
+            <g id="map-paths" />
+            <g>
+              <motion.rect
+                x={
+                  labelPosition
+                    ? labelPosition.x - textDimensions.width / 2 - 10
+                    : 0
+                }
+                y={labelPosition ? labelPosition.y - textDimensions.height : 0}
+                width={textDimensions.width + 20}
+                height={textDimensions.height + 20}
+                fill="#8b5cf6"
+                stroke="#fff"
+                strokeWidth="3"
+                rx="5"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: labelPosition ? 1 : 0 }}
+                transition={{ duration: 0.3 }}
+              />
+              <motion.text
+                ref={textRef}
+                x={labelPosition ? labelPosition.x : 0}
+                y={labelPosition ? labelPosition.y : 0}
+                textAnchor="middle"
+                fontSize="14"
+                fontWeight="bold"
+                pointerEvents="none"
+                fill="#000"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: labelPosition ? 1 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                {districtName}
+              </motion.text>
+            </g>
+          </svg>
         </div>
-
-        { (
-          <div className="district-tooltip">{districtName} </div>
-        )}
 
         <div className="gallery-circle-images">
           {selectedDistrict &&
@@ -152,7 +208,7 @@ const ExploreGalleryPage = () => {
                 alt={image.alt}
                 className="gallery-main-image"
                 style={{
-                  width: "300px",
+                  width: "260px",
                   height: "200px",
                   margin: "10px",
                   borderRadius: "12px",

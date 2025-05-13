@@ -9,3 +9,23 @@
     font-weight: 500;
     color: black;
 }
+ 
+.explore-switching-headings p {
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+ 
+.explore-switching-headings p:hover {
+    color: #540b87;
+}
+ 
+.active-heading {
+    color: #540b87;
+    border-bottom: 2px solid #540b87;
+}
+ 
+.explore-switched-components-container {
+    margin-top: 20px;
+}
+ 

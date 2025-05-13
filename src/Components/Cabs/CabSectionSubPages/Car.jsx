@@ -1,6 +1,8 @@
 import React from 'react';
 import './CabSection.css';
 
+import { FaHeart } from 'react-icons/fa';
+
 const Car = () => {
   const carData = [
     {
@@ -51,14 +53,14 @@ const Car = () => {
                   <h3>Car Name</h3>
                   <p className="car-type">{car.name}</p>
                 </div>
-                <span className="cab-book-heart-icon">❤️</span>
+                <span className="cab-book-heart-icon"><FaHeart /></span>
               </div>
               <div className="cab-book-car-image">
               <img src={car.img} alt={car.name} className="cab-book-car-img" />
               </div>
               <p className="people-count">👥 {car.people} people</p>
               <div className="cab-book-details">
-                <p className="cab-book-price">₹{car.price}/day</p>
+                <p className="cab-book-price">₹{car.price}/<span>day</span></p>
                 <button className="cab-book-btn">Book Now</button>
               </div>
             </div>

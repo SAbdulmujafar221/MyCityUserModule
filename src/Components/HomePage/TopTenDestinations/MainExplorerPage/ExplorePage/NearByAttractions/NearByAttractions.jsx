@@ -1,70 +1,76 @@
 import React, { useRef } from "react";
 import Slider from "react-slick";
-
-// Import Slick Carousel styles
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./NearByAttractions.css";
 
-const exploreAttractionImages = [
-  {
-    src: "/assets/NearByImages/nearbyplaces1.png",
-  },
-  {
-    src: "/assets/NearByImages/nearbyplaces2.png",
-  },
-  {
-    src: "/assets/NearByImages/nearbyplaces3.png",
-  },
-];
-
-const NearByAttractions = () => {
-  const swiperRef = useRef(null);
+const NearByAttractions = ({ nearByPlaces }) => {
+  const sliderRef = useRef(null);
 
   const settings = {
-    infinite: true, // Infinite loop
-    speed: 500, // Transition speed in ms
-    slidesToShow: 2, // Show one slide at a time
-    slidesToScroll: 1, // Scroll one slide at a time
-    pauseOnHover: false, 
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    pauseOnHover: false,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
   const NearByAttractionsBackGround =
-    "./assets/images/ExploreImages/explorebg3.jpeg";
+    "https://via.placeholder.com/1200x400?text=Nearby+Attractions";
+
   return (
     <div className="NearByAttraction-container">
       <img
         src={NearByAttractionsBackGround}
-        alt="Loading...."
+        alt="Background"
         className="NearbyAttractionBack"
       />
 
-      <div className="Explore-slider-container ">
+      <div className="Explore-slider-container">
         <div className="Explore-intro-heading">
           <div className="explore-intro-dot"></div>
           <h2 className="Explore-intro">Near By Attractions</h2>
         </div>
+
         <div className="Explore-custom-navigation">
           <p
             className="Explore-prev-btn"
-            onClick={() => swiperRef.current?.slickPrev()}
+            onClick={() => sliderRef.current?.slickPrev()}
           >
-            &#8592;
+            ←
           </p>
           <p
             className="Explore-next-btn"
-            onClick={() => swiperRef.current?.slickNext()}
+            onClick={() => sliderRef.current?.slickNext()}
           >
-            &#8594;
+            →
           </p>
         </div>
-        <Slider ref={swiperRef} {...settings}>
-          {exploreAttractionImages.map((image) => (
-            <div key={image.id} className="explore-near-slide">
-              <img src={image.src} alt={image.alt} className="explore-slide-image" />
-            </div>
-          ))}
-        </Slider>
+
+        {nearByPlaces.length > 0 ? (
+          <Slider ref={sliderRef} {...settings}>
+            {nearByPlaces.map((place, index) => (
+              <div key={index} className="explore-near-slide">
+                <img
+                  src={place.image}
+                  alt={place.imageAlt}
+                  className="explore-slide-image"
+                />
+                <p className="explore-near-place-name">{place.name}</p>
+              </div>
+            ))}
+          </Slider>
+        ) : (
+          <p>No nearby attractions available.</p>
+        )}
       </div>
     </div>
   );

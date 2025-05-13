@@ -4,166 +4,130 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./PageTwo.css";
-import { Link } from "react-router";
-// import { useSpring, animated } from "@react-spring/web";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
-const images = [
-  {
-    src: "/assets/images/home-images/img3.jpg",
-    alt: "Beautiful mountain view",
-    title: "Maredupalli",
-  },
-  {
-    src: "/assets/images/home-images/img4.jpg",
-    alt: "Serene beach landscape",
-    title: "Beachside Bliss",
-  },
-  {
-    src: "/assets/images/home-images/img5.jpg",
-    alt: "Historical city architecture",
-    title: "Historic Wonders",
-  },
-  {
-    src: "/assets/images/home-images/img6.jpg",
-    alt: "Peaceful countryside scenery",
-    title: "Countryside Retreat",
-  },
-  {
-    src: "/assets/images/home-images/img7.jpg",
-    alt: "Vibrant sunset over the ocean",
-    title: "Ocean Sunset",
-  },
-];
+const tourismBackground = "/assets/tourismbg.jpg";
 
-const PageTwo = ({ initialImage }) => {
+const PageTwo = () => {
   const [startIndex, setStartIndex] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [inView, setInView] = useState(false);
-  const [displayImages, setDisplayImages] = useState([
-    {
-      src: initialImage,
-      alt: "Beautiful mountain view",
-      title: "Maredupalli",
-    },
-    ...images.slice(1),
-  ]);
   const sectionRef = useRef(null);
+  const [places, setPlaces] = useState([]);
 
   useEffect(() => {
-    setInView(true);
+    const fetchPlaces = async () => {
+      try {
+        const res = await axios.get(
+          "https://383b-122-166-70-72.ngrok-free.app/client/discovery/getall",
+          {
+            headers: {
+              "ngrok-skip-browser-warning": "true",
+            },
+            withCredentials: true,
+          }
+        );
+        console.log("API Response:", res.data);
+        const fetchedPlaces = res.data || [];
+        setPlaces(fetchedPlaces);
+      } catch (error) {
+        console.error("Error fetching places:", error);
+      }
+    };
 
-    const timer = setTimeout(() => {
-      setDisplayImages(images);
-    }, 100);
-    return () => clearTimeout(timer);
+    fetchPlaces();
   }, []);
 
-  const getVisibleImages = () => {
-    return [
-      ...images.slice(startIndex, Math.min(startIndex + 5, images.length)),
-      ...images.slice(0, Math.max(0, startIndex + 5 - images.length)),
+  const getVisiblePlaces = () => {
+    const visiblePlaces = [
+      ...places.slice(startIndex, Math.min(startIndex + 5, places.length)),
+      ...places.slice(0, Math.max(0, startIndex + 5 - places.length)),
     ];
+    console.log("Visible Places:", visiblePlaces);
+    return visiblePlaces;
   };
 
   const nextSlide = () => {
-    setStartIndex((prevIndex) => (prevIndex + 1) % images.length);
+    setStartIndex((prevIndex) => (prevIndex + 1) % places.length);
   };
 
   const prevSlide = () => {
     setStartIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+      (prevIndex) => (prevIndex - 1 + places.length) % places.length
     );
   };
 
   return (
-    <div>
-      <Link to="/MainExplorePlorer">
-        {inView && (
-          <div className="top-ten-destinations">
-            <h2 className="ten-destinations-heading">
-              Discover Top 10 Destinations
-            </h2>
-            {/* <MovingImage /> */}
-            <div className="slider-navigation">
-              <button onClick={prevSlide}>
-                <FaArrowLeft className="arrow left" />
-              </button>
-              <button onClick={nextSlide}>
-                <FaArrowRight className="arrow right" />
-              </button>
-            </div>
+    <>
+      <div className="tourism-module-background">
+        <img
+          src={tourismBackground}
+          alt="tourism background"
+          className="tourism-background-image"
+        />
+      </div>
 
-            <div className="page-two-slider-container" ref={sectionRef}>
-              <motion.div className="page-two-image-wrapper">
-                {getVisibleImages().map((img, index) => (
-                  <motion.div
-                    key={index}
-                    className={`page-two-image-container ${
-                      index === activeIndex ? "active" : ""
+      <div className="top-ten-destinations">
+        <h2 className="ten-destinations-heading">
+          Bucket List Worthy: <span>10 Destinations You Can't Miss!</span>
+        </h2>
+
+        <div className="slider-navigation">
+          <button onClick={prevSlide}>
+            <FaArrowLeft className="arrow left" />
+          </button>
+          <button onClick={nextSlide}>
+            <FaArrowRight className="arrow right" />
+          </button>
+        </div>
+
+        <div className="page-two-slider-container" ref={sectionRef}>
+          <motion.div className="page-two-image-wrapper">
+            {getVisiblePlaces().map((place, index) => (
+              <motion.div
+                key={place.placeId}
+                className={`page-two-image-container ${
+                  index === activeIndex ? "active" : ""
+                }`}
+                onMouseEnter={() => setActiveIndex(index)}
+                onMouseLeave={() => setActiveIndex(0)}
+                initial={{ width: "20%" }}
+                animate={{
+                  width: index === activeIndex ? "100%" : "20%",
+                  transition: { duration: 0.5, ease: "easeInOut" },
+                }}
+              >
+                <Link to={`/MainExplorePlorer/${place.placeId}`}>
+
+
+                  <motion.img
+                    src={
+                      (place.placeRelatedImages &&
+                        place.placeRelatedImages.length > 0 &&
+                        place.placeRelatedImages[0].imageUrl) ||
+                      "/assets/fallback.jpg"
+                    }
+                    alt={place.placeName}
+                    initial={{
+                      y: index % 2 === 0 ? "-100%" : "100%",
+                      opacity: 0,
+                    }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                    className={`page-two-slider-image ${
+                      index === activeIndex ? "active" : "inactive"
                     }`}
-                    onMouseEnter={() => {
-                      setActiveIndex(index);
-                    }}
-                    onMouseLeave={() => setActiveIndex(0)}
-                    animate={{
-                      width: index === activeIndex ? "100%" : "20%",
-                      transition: { duration: 0.5, ease: "easeInOut" },
-                    }}
-                  >
-                    <motion.img
-                      src={img.src}
-                      alt={img.alt}
-                      initial={
-                        index === 0
-                          ? {
-                              scale: 0.8,
-
-                              opacity: 1,
-                            }
-                          : {
-                              y: index % 2 === 0 ? "-100%" : "100%",
-                              opacity: 0,
-                            }
-                      }
-                      animate={
-                        index === 0
-                          ? {
-                              scale: 1,
-                              x: "0%",
-                              y: "0%",
-                              opacity: 1,
-                            }
-                          : {
-                              y: 0,
-                              opacity: 1,
-                            }
-                      }
-                      transition={
-                        index === 0
-                          ? {
-                              duration: 0.5,
-                              delay: 0.2,
-                            }
-                          : {
-                              duration: 1,
-                              delay: 0.5,
-                            }
-                      }
-                      className={`page-two-slider-image ${
-                        index === activeIndex ? "active" : "inactive"
-                      } ${index === 0 ? "first-image" : ""}`}
-                    />
-                    {index === activeIndex && (
-                      <div className="image-text">{img.title}</div>
-                    )}
-                  </motion.div>
-                ))}
+                  />
+                </Link>
+                {index === activeIndex && (
+                  <div className="top-image-text">{place.placeName}</div>
+                )}
               </motion.div>
-            </div>
-          </div>
-        )}
-      </Link>
-    </div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    </>
   );
 };
 

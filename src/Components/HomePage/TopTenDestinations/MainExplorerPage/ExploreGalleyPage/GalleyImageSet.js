@@ -234,6 +234,38 @@ export const GALLERY_IMAGE_SET = [
         {
           "img": "/assets/GalleryImages/TopImages/top8.png",
           "alt": "Person 1"
+        },
+        {
+          "img": "/assets/GalleryImages/TopImages/top1.png",
+          "alt": "Person 1"
+        },
+        {
+          "img": "/assets/GalleryImages/TopImages/top2.png",
+          "alt": "Person 1"
+        },
+        {
+          "img": "/assets/GalleryImages/TopImages/top3.png",
+          "alt": "Person 1"
+        },
+        {
+          "img": "/assets/GalleryImages/TopImages/top4.png",
+          "alt": "Person 1"
+        },
+        {
+          "img": "/assets/GalleryImages/TopImages/top5.png",
+          "alt": "Person 1"
+        },
+        {
+          "img": "/assets/GalleryImages/TopImages/top6.png",
+          "alt": "Person 1"
+        },
+        {
+          "img": "/assets/GalleryImages/TopImages/top7.png",
+          "alt": "Person 1"
+        },
+        {
+          "img": "/assets/GalleryImages/TopImages/top8.png",
+          "alt": "Person 1"
         }
       ]
     },

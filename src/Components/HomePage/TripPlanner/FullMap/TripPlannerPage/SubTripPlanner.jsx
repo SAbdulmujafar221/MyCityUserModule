@@ -6,15 +6,16 @@ import "../SubTripPlanner.css";
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
-import TripPlannerimg1 from "../../TripPlannerImages/cards/image1.png"
-import TripPlannerimg2 from "../../TripPlannerImages/cards/image2.png"
+import TripPlannerimg1 from "../../TripPlannerImages/cards/image1.png";
+import TripPlannerimg2 from "../../TripPlannerImages/cards/image2.png";
 import { Link, useNavigate } from "react-router-dom";
+import BackToHome from "../../../../BackToHome/BackToHome";
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: markerIcon2x,
   iconUrl: markerIcon,
   shadowUrl: markerShadow,
 });
-
+ 
 const SubTripPlanner = () => {
   const [source, setSource] = useState("");
   const [destination, setDestination] = useState("");
@@ -27,8 +28,8 @@ const SubTripPlanner = () => {
   const [geoJsonData, setGeoJsonData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [mapUrl, setMapUrl] = useState(""); 
-
+  const [mapUrl, setMapUrl] = useState("");
+ 
   const districts = [
     { value: "", label: "Select District" },
     { value: "Visakhapatnam", label: "Visakhapatnam" },
@@ -36,16 +37,16 @@ const SubTripPlanner = () => {
     { value: "Guntur", label: "Guntur" },
     { value: "Chittoor", label: "Chittoor" },
   ];
-
+ 
   const GOOGLE_MAPS_API_KEY = "AIzaSyC3KeEEm78TviKybHIdwbHIKi5_lgavUMg";
-
+ 
   useEffect(() => {
     setIsButtonEnabled(source && destination && startDate && endDate);
   }, [source, destination, startDate, endDate]);
-
+ 
   useEffect(() => {
     setIsLoading(true);
-
+ 
     const fetchPlaces = fetch("/placesData.json")
       .then((response) => {
         if (!response.ok) throw new Error("Failed to fetch places data");
@@ -55,7 +56,7 @@ const SubTripPlanner = () => {
         setPlaces(data.places);
         setCategories(data.categories);
       });
-
+ 
     const fetchGeoJson = fetch(
       "https://nominatim.openstreetmap.org/search?q=Andhra+Pradesh,India&format=geojson&polygon_geojson=1"
     )
@@ -75,12 +76,12 @@ const SubTripPlanner = () => {
           otherStates: { type: "FeatureCollection", features: [] },
         });
       });
-
+ 
     Promise.all([fetchPlaces, fetchGeoJson])
       .catch((err) => setError(err.message))
       .finally(() => setIsLoading(false));
   }, []);
-
+ 
   useEffect(() => {
     if (isTripPlanned) {
       if (source && destination) {
@@ -104,16 +105,17 @@ const SubTripPlanner = () => {
       }
     }
   }, [source, destination, isTripPlanned]);
-
+ 
   const today = new Date().toISOString().split("T")[0];
-
+ 
   const handlePlanTrip = () => {
     setIsTripPlanned(true);
   };
-
-  const navigate=useNavigate();
-  const mainContainerClass = "tp-main-container tp-main-container--with-background";
-
+ 
+  const navigate = useNavigate();
+  const mainContainerClass =
+    "tp-main-container tp-main-container--with-background";
+ 
   const createIcon = (iconUrl) => {
     return L.icon({
       iconUrl: iconUrl || markerIcon,
@@ -122,14 +124,12 @@ const SubTripPlanner = () => {
       popupAnchor: [0, -25],
     });
   };
-
+ 
   return (
     <div className="tp-wrapper">
+      <BackToHome />
       <div className={mainContainerClass}>
-       
-       <button className="tp-back-button" onClick={() => navigate("/")}>
-          <span className="tp-back-icon">←</span> Back to Home
-        </button>
+      
         <div className="tp-container">
           <h1 className="tp-heading">Trip Planner</h1>
           {!isTripPlanned ? (
@@ -176,7 +176,8 @@ const SubTripPlanner = () => {
                         key={place.id}
                         position={[place.latitude, place.longitude]}
                         icon={createIcon(
-                          categories.find((cat) => cat.name === place.category)?.icon
+                          categories.find((cat) => cat.name === place.category)
+                            ?.icon
                         )}
                       >
                         <Popup>
@@ -189,7 +190,7 @@ const SubTripPlanner = () => {
                   </MapContainer>
                 )}
               </div>
-
+ 
               <div className="tp-left-section">
                 <select
                   value={source}
@@ -206,7 +207,7 @@ const SubTripPlanner = () => {
                       )
                   )}
                 </select>
-
+ 
                 <select
                   value={destination}
                   onChange={(e) => setDestination(e.target.value)}
@@ -257,16 +258,33 @@ const SubTripPlanner = () => {
             <>
               <div className="tp-left-section">
                 <div className="tp-images-container">
-                  <img
-                    src={TripPlannerimg1}
-                    alt="Loading"
-                    className="tp-image"
-                  />
-                  <img
-                    src={TripPlannerimg2}
-                    alt="Image 2"
-                    className="tp-image"
-                  />
+                  <div className="place-name-wrapper">
+                    <img
+                      src={TripPlannerimg1}
+                      alt="Loading"
+                      className="tp-image"
+                    />
+                    <h4>Place Name</h4>
+                  </div>
+ 
+                  <div className="admin-tourism-list-rating-icon">
+                    <h4>+ Add Stop</h4>
+                  </div>
+ 
+                  <div className="second-place-image-wrapper">
+                    <div className="place-name-wrapper">
+                      <img
+                        src={TripPlannerimg2}
+                        alt="Image 2"
+                        className="tp-image"
+                      />
+                      <h4>Place Name</h4>
+                    </div>
+                  </div>
+ 
+                  <div className="admin-tourism-list-rating-icon">
+                    <h4>+ Add Stop </h4>
+                  </div>
                 </div>
               </div>
               <div className="tp-map-container">
@@ -288,5 +306,7 @@ const SubTripPlanner = () => {
     </div>
   );
 };
-
+ 
 export default SubTripPlanner;
+ 
+ 

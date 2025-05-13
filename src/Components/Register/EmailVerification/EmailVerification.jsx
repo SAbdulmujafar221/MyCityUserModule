@@ -13,9 +13,7 @@ const EmailVerification = ({
   const [loading, setLoading] = useState(false);
   const [otpError, setOtpError] = useState(false);
 
-
   const validateEmail = (email) => {
- 
     // if(email>15){
     //   alert("email showld only in 15 characters")
     // }
@@ -23,11 +21,11 @@ const EmailVerification = ({
     // if(valuemailing>15){
     //   alert("email showld only in 15 characters");
     // }
-      
-    const emailRegex = /^[a-zA-Z0-9](?!.*\.{2})[a-zA-Z0-9._%+-]{0,62}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    const emailRegex =
+      /^[a-zA-Z0-9](?!.*\.{2})[a-zA-Z0-9._%+-]{0,62}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailRegex.test(email.trim());
   };
-
 
   const handleSendOtp = async () => {
     // if (!validateEmail(email)) {
@@ -38,7 +36,11 @@ const EmailVerification = ({
     try {
       setLoading(true);
       setShowOtpInput(true);
-      await axios.post("https://854f-122-166-70-72.ngrok-free.app/otp/send", { email });
+      await axios.post(
+        "https://8b21-122-166-70-72.ngrok-free.app/client/email/request-otp",
+         {email },
+       { headers: { "Content-Type": "application/json" } },
+      );
       alert("OTP Sent to Email!");
     } catch (error) {
       alert(error.response?.data?.message || "Failed to send OTP");
@@ -50,10 +52,10 @@ const EmailVerification = ({
   const handleVerifyOtp = async (otp) => {
     try {
       const response = await axios.post(
-        "https://854f-122-166-70-72.ngrok-free.app/otp/validate",
+        "https://8b21-122-166-70-72.ngrok-free.app/client/email/verify-otp",
         { email, otp }
       );
-      if (response.data.success) {
+      if (response.data.otpVerified === true) {
         setEmailVerified(true);
         setShowOtpInput(false);
         setOtpError(false);
@@ -64,6 +66,7 @@ const EmailVerification = ({
         alert("Incorrect OTP");
         setOtp(["", "", "", ""]);
       }
+      
     } catch (error) {
       setOtpError(true);
       alert(error.response?.data?.message || "Verification failed");
@@ -105,17 +108,15 @@ const EmailVerification = ({
           />
         </li>
         <li className="verify-button">
-          {!emailVerified &&
-            !showOtpInput &&
-            validateEmail(email) && (
-              <button
-                onClick={handleSendOtp}
-                disabled={loading}
-                className="verify-btn"
-              >
-                {loading ? "Sending..." : "Verify"}
-              </button>
-            )}
+          {!emailVerified && !showOtpInput && validateEmail(email) && (
+            <button
+              onClick={handleSendOtp}
+              disabled={loading}
+              className="verify-btn"
+            >
+              {loading ? "Sending..." : "Verify"}
+            </button>
+          )}
         </li>
       </ul>
 
@@ -132,13 +133,13 @@ const EmailVerification = ({
               className="otp-input"
             />
           ))}
-          
+
           {otpError && (
             <div className="error-message">
               <span className="error-otp">❌ Incorrect OTP</span>
             </div>
           )}
-          
+
           {emailVerified && <span className="verified-message">Verified</span>}
         </div>
       )}

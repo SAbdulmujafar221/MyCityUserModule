@@ -3,7 +3,7 @@ import "./CabBookFromAndTo.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
-
+ 
 const CabBookFromAndTo = () => {
   const [pickUpLocation, setPickUpLocation] = useState("");
   const [dropOffLocation, setDropOffLocation] = useState("");
@@ -15,20 +15,20 @@ const CabBookFromAndTo = () => {
   const [dropOffHour, setDropOffHour] = useState("");
   const [dropOffMinute, setDropOffMinute] = useState("");
   const [dropOffPeriod, setDropOffPeriod] = useState("");
-
+ 
   const [showPickUpTimeSelectors, setShowPickUpTimeSelectors] = useState(false);
   const [showDropOffTimeSelectors, setShowDropOffTimeSelectors] =
     useState(false);
-
+ 
   const [hoveredVehicle, setHoveredVehicle] = useState(null);
-
+ 
   const handleSwap = () => {
     setPickUpLocation(dropOffLocation);
     setDropOffLocation(pickUpLocation);
   };
-
+ 
   const navigate = useNavigate();
-
+ 
   const vehicles = {
     bike: [
       { name: "Bike 1", price: "₹599/day", capacity: "2 people" },
@@ -47,7 +47,7 @@ const CabBookFromAndTo = () => {
   // const handleCabBookingClick = () => {
   //   console.log("Cab booking button clicked!");
   // };
-
+ 
   const cities = [
     "Visakhapatnam",
     "Vijayawada",
@@ -82,20 +82,20 @@ const CabBookFromAndTo = () => {
     "Mangalagiri",
     "Chilakaluripet",
   ];
-
+ 
   const minDate = new Date("2025-03-26");
-
+ 
   const hours = Array.from({ length: 12 }, (_, i) => (i + 1).toString());
   const minutes = Array.from({ length: 60 }, (_, i) =>
     i.toString().padStart(2, "0")
   );
   const periods = ["AM", "PM"];
-
+ 
   const formatTime = (hour, minute, period) => {
     if (!hour || !minute || !period) return "Select Your Time";
     return `${hour}:${minute} ${period}`;
   };
-
+ 
   return (
     <div className="cab-container">
       <div className="left-section">
@@ -104,11 +104,11 @@ const CabBookFromAndTo = () => {
             className="cab-booking-button"
             onClick={() => {
               console.log("Navigating to home...");
-              navigate("/");
+              navigate("/MainExploreplorer");
             }}
           >
             <span className="arrow-circle">←</span>
-            Cab booking
+            Go Back
           </button>
         </div>
         <div className="location-container">
@@ -296,5 +296,7 @@ const CabBookFromAndTo = () => {
     </div>
   );
 };
-
+ 
 export default CabBookFromAndTo;
+ 
+ 

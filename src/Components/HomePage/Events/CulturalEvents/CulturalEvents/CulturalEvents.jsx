@@ -1,154 +1,172 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 import "./CulturalEvents.css";
- import image1  from "../CulturalEvents/CulturalEventsImages/image.png";
- import MakarSankranthri from "../CulturalEvents/CulturalEventsImages/Makar-Sankranti-1.jpg";
- import MakarSankranthri2 from "../CulturalEvents/CulturalEventsImages/Makar-Sankranti-3.jpg";
- import Pot1 from "../CulturalEvents/CulturalEventsImages/Pot1.png";
- import Pot2 from "../CulturalEvents/CulturalEventsImages/Pot2.png";
- import backgroundImage from "../CulturalEvents/CulturalEventsImages/background.png";
-let events = [
-  {
-    name: "lorem Ipsum",
-    desc: "Starting our voyage with Makar Sankranti, a captivating festival that marks the arrival of spring",
-    position: "right"
-  },
-  {
-    name: "lorem Ipsum",
-    desc: "Starting our voyage with Makar Sankranti, a captivating festival that marks the arrival of spring",
-    position: "right"
-  },
-  {
-    name: "lorem Ipsum",
-    desc: "Starting our voyage with Makar Sankranti, a captivating festival that marks the arrival of spring",
-    position: "left"
-  },
-  {
-    name: "lorem Ipsum",
-    desc: "Starting our voyage with Makar Sankranti, a captivating festival that marks the arrival of spring",
-    position: "left"
-  },
-  {
-    name: "lorem Ipsum",
-    desc: "Starting our voyage with Makar Sankranti, a captivating festival that marks the arrival of spring",
-    position: "right"
-  },
-];
- 
-const TimelineItem = ({ event }) => {
-  return (
-    <div className={`container ${event.position}-container`}>
-      <div className="dot"></div>
-      <div className="textbox">
-        <div className="title">
-          <h1>{event.name}</h1>
-        </div>
-        <p>{event.desc}</p>
-      </div>
-    </div>
-  );
-};
- 
+import { IoMdArrowBack } from "react-icons/io";
+import Footer from "../../../../Footer/Footer";
+import BackToHome from "../../../../BackToHome/BackToHome";
+import SimilarEvents from "./SimilarEvents";
+import UpcomingEvents from "./UpcomingEvents";
+
 function CulturalEvents() {
+  const { id } = useParams();
+  const [event, setEvent] = useState(null);
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  useEffect(() => {
+    const fetchEvent = async () => {
+      try {
+        const res = await axios.get(
+          `https://72a3-122-166-70-72.ngrok-free.app/client/event/fetch/${id}`,
+          {
+            headers: {
+              "ngrok-skip-browser-warning": "true",
+            },
+            withCredentials: true,
+          }
+        );
+        const data = res.data.data;
+
+        console.log("Event data:", res.data);
+
+        const parsedPlaces = Array.isArray(data.eventPlaces)
+          ? data.eventPlaces
+          : JSON.parse(data.eventPlaces.join("").replace(/\\\"/g, '"'));
+
+        setEvent({
+          name: data.eventName,
+          date: data.date,
+          time: data.time,
+          description: data.description,
+          images: data.eventImages || [],
+          schedule: data.schedule || [],
+          places: parsedPlaces || [],
+        });
+      } catch (err) {
+        console.error("Failed to fetch event:", err);
+      }
+    };
+
+    fetchEvent();
+  }, [id]);
+
+  useEffect(() => {
+    if (!event) return;
+    const target = new Date(`${event.date}T${event.time}`);
+    const interval = setInterval(() => {
+      const now = new Date();
+      const diff = target - now;
+      if (diff <= 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        clearInterval(interval);
+        return;
+      }
+      setTimeLeft({
+        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((diff / (1000 * 60)) % 60),
+        seconds: Math.floor((diff / 1000) % 60),
+      });
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [event]);
+
+  if (!event) return <div>Loading...</div>;
+
+  const isEventEnded =
+    timeLeft.days === 0 &&
+    timeLeft.hours === 0 &&
+    timeLeft.minutes === 0 &&
+    timeLeft.seconds === 0;
+
   return (
     <>
-      <div>
-        
- 
-        <section className="hero">
- 
-          <h1>Makara <span >Sankranti </span></h1>
+      <BackToHome />
+      <section
+        className="hero"
+        style={{
+          backgroundImage: `url(${
+            event.images[0] || "https://via.placeholder.com/1200x400"
+          })`,
+        }}
+      >
+        <h1>{event.name}</h1>
+        {isEventEnded ? (
+          <p className="event-ended">This event has ended.</p>
+        ) : (
           <div className="countdown">
-            <div><span>05</span> Days</div>
-            <div><span>30</span> Hours</div>
-            <div><span>15</span> Min</div>
-            <div><span>05</span> Sec</div>
-          </div>
-        </section>
- 
-        <section className="about">
-          <div className="about-content">
-            <div className="about-left">
-              <img src={image1}alt="About-Image" />
+            <div>
+              <span>{String(timeLeft.days).padStart(2, "0")}</span> Days
             </div>
-            <div className="about-right">
-              <h1>About</h1>
-              <h2>Makara Sankranti</h2>
-              <p>
-                Starting our voyage with Makar Sankranti, a captivating festival that marks the arrival of spring, it is more than just the celebration of a season. It is an occasion where households are embellished with vibrant “muggu” (rangoli), and courtyards are adorned with decorative cow-dung balls called “Gobbemma”. In a unique aerial spectacle, the azure sky transforms into a canvas painted with thousands of multicolored kites, symbolizing the cutting of past negativity and the ushering in of hope. The harmonious humdrum of people flying kites, engaging in friendly duels, and rejoicing under the warm sun embodies an ineffable joy that resonates with the spirit of Sankranti.              </p>
+            <div>
+              <span>{String(timeLeft.hours).padStart(2, "0")}</span> Hours
+            </div>
+            <div>
+              <span>{String(timeLeft.minutes).padStart(2, "0")}</span> Min
+            </div>
+            <div>
+              <span>{String(timeLeft.seconds).padStart(2, "0")}</span> Sec
             </div>
           </div>
-        </section>
- 
-{/*
-        <section className="highlights">
-          <h2>Event Highlights</h2>
-          <section className="timeline-container">
-            <div className="timeline">
-              {events.map((event, index) => (
-                <div key={index} className={`timeline-item ${event.position}`}>
-                  <div className="timeline-content">
-                    <h3>{event.name}</h3>
-                    <p>{event.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        </section> */}
- 
- <section className="highlights">
-  <h2 className="event-heading">Event Highlights</h2>
+        )}
+      </section>
 
-  <img src={MakarSankranthri} alt="MakarSankranthri" className="img img-1" />
-  <img src={MakarSankranthri2} alt="" className="img img-2" />
-  <img src={Pot1} alt="" className="img img-3" />
-  <img src={Pot2} alt="" className="img img-4" />
-  <img src={Pot2} alt="" className="img img-5" />
-  <img src={backgroundImage} alt="" className="img img-6" />
-
-  <div className="timeline">
-    {events.map((event, index) => (
-      <div key={index} className={`timeline-item ${event.position}`}>
-        <div className="timeline-content">
-          <h3>{event.name}</h3>
-          <p>{event.desc}</p>
+      <section className="about">
+        <div className="about-content">
+          <div className="about-left">
+          {event.images.map((img, i) => (
+            <img key={i} src={img} alt={`Event ${i + 1}`} />
+          ))}
+          </div>
+          <div className="about-right">
+            <h1>About</h1>
+            <p>{event.description}</p>
+          </div>
         </div>
+      </section>
+
+      <section className="highlights">
+        <h2>Schedule</h2>
+        <ul className="schedule-list">
+          {event.schedule.map((item, i) => (
+            <li key={i}>
+              <strong>{item.activityName}</strong> — {item.date} at {item.time}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* <section className="locations">
+        <h2>Event Locations</h2>
+        <ul>
+          {event.places.map((place, i) => (
+            <li key={i}>{place}</li>
+          ))}
+        </ul>
+      </section> */}
+
+      {/* <section className="gallery">
+        <h2>Gallery</h2>
+        <div className="images">
+          {event.images.map((img, i) => (
+            <img key={i} src={img} alt={`Event ${i + 1}`} />
+          ))}
+        </div>
+      </section> */}
+      <div className="similar-upcoming-block">
+        <SimilarEvents currentEventName={event.name} />
+        <UpcomingEvents />
       </div>
-    ))}
-  </div>
-</section>
-        <section className="upcoming">
-          <h2>Upcoming Events</h2>
-          <div className="cards">
-            <div className="card">
-              <img src={MakarSankranthri2} alt="Event 1" />
-              <div className="date"><h1>On</h1><p>Date</p></div>
-              <div className="details"><h1>Event Name</h1><p>Place</p></div>
-            </div>
-            <div className="card">
-              <img src={MakarSankranthri} alt="Event 2" />
-              <div className="date"><h1>On</h1><p>Date</p></div>
-              <div className="details"><h1>Event Name</h1><p>Place</p></div>
-            </div>
-            <div className="card">
-              <img src={MakarSankranthri2} alt="Event 3" />
-              <div className="date"><h1>On</h1><p>Date</p></div>
-              <div className="details"><h1>Event Name</h1><p>Place</p></div>
-            </div>
-          </div>
-        </section>
- 
-        <footer>
-          <div className="footer-columns">
-            <div><h4>About Us</h4><a href="#">my city</a></div>
-            <div><h4>Quick Links</h4><p><a href="#">Contact us</a><br /><a href="#">Events</a></p></div>
-            <div><h4>Contact</h4><p>+91 9876543210</p><br /><p>email@example.com</p><br /><p>XYZ Road, Andhra Pradesh, India</p></div>
-          </div>
-          <div className="socials"><span>© 2025 | Follow us: FB IG TW</span></div>
-        </footer>
-      </div>
+      {/* <div className="footer-for-page">
+        <Footer />
+      </div> */}
     </>
   );
 }
- 
+
 export default CulturalEvents;

@@ -53,7 +53,7 @@ const Auto = () => {
               </div>
               <p className="people-count">👥 {car.people} people</p>
               <div className="cab-book-details">
-                <p className="cab-book-price">₹{car.price}/day</p>
+                <p className="cab-book-price">₹{car.price}/<span>day</span></p>
                 <button className="cab-book-btn">Book Now</button>
               </div>
             </div>

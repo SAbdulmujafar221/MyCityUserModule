@@ -5,8 +5,8 @@
     height: 660px;
     padding: 40px 0;
     overflow: hidden;
-   right: 720px;
-    top: 40vh;
+   left: 50px;
+    top: 20vh;
     display: flex;
     gap: 20px;
     flex-direction: column;

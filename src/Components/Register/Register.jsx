@@ -4,17 +4,16 @@ import EmailVerification from "./EmailVerification/EmailVerification";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import "./Register.css";
-// import "./EmailVerification/email.css";
-import { FaEye, FaEyeSlash, FaTimes } from "react-icons/fa";
-import { Link } from "react-router";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-const RegisterPage = ({ onClose }) => {
+const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [emailVerified, setEmailVerified] = useState(false);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [mobilenumber, setmobilenumber] = useState("");
   const [phoneError, setPhoneError] = useState("");
   const [nameError, setNameError] = useState("");
   const [firstname, setFirstName] = useState("");
@@ -22,7 +21,6 @@ const RegisterPage = ({ onClose }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [emailError, setEmailError] = useState("");
-  // const [isOpen, setIsOpen] = useState(false);
 
   const handleNameChange = (e, setName) => {
     let valuename = e.target.value;
@@ -43,10 +41,10 @@ const RegisterPage = ({ onClose }) => {
   };
 
   const handlePhoneChange = (phone) => {
-    setPhoneNumber(phone);
+    setmobilenumber(phone);
     const numericPhone = phone.replace(/\D/g, "");
 
-    if (numericPhone.length < 13) {
+    if (numericPhone.length < 17) {
       setPhoneError("Phone number must be at least 10 digits long.");
     } else {
       setPhoneError("");
@@ -55,7 +53,7 @@ const RegisterPage = ({ onClose }) => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    if (!isValidPhoneNumber(phoneNumber)) {
+    if (!isValidmobilenumber(mobilenumber)) {
       setPhoneError("Phone number must be 10 digits!");
       return;
     }
@@ -71,12 +69,13 @@ const RegisterPage = ({ onClose }) => {
     setPasswordError("");
     setPhoneError("");
     setNameError("");
-
+    const numericPhone = mobilenumber.replace(/\D/g, ""); 
+    const lastTenDigits = numericPhone.slice(-15);
     const payload = {
       firstname,
       lastname,
       email,
-      phoneNumber,
+      mobilenumber ,// : lastTenDigits,
       password,
     };
 
@@ -84,27 +83,24 @@ const RegisterPage = ({ onClose }) => {
 
     try {
       const response = await axios.post(
-        "https://f328-122-166-70-72.ngrok-free.app/auth/register",
+        "https://8b21-122-166-70-72.ngrok-free.app/client/register/user",
         payload
       );
       console.log("Server response:", response);
-      if (response.data.success) {
+      if (response.data.message === true) {
         alert("Registration successful!");
-      } else {
-        alert("Registration failed: " + response.data.message);
-      }
+      } 
     } catch (error) {
       console.error("Error response:", error.response);
       if (error.response?.data?.message === "User already registered") {
         alert("User already registered. Go to login page.");
       } else {
         alert(
-          "Registration failed: " +
+          
             (error.response?.data?.message || error.message)
         );
       }
     }
-    onClose();
   };
 
   const validateEmail = (e) => {
@@ -127,158 +123,153 @@ const RegisterPage = ({ onClose }) => {
     return strongPasswordRegex.test(password);
   };
 
-  const isValidPhoneNumber = (phoneNumber) => {
-    return phoneNumber.length > 0;
+  const isValidmobilenumber = (mobilenumber) => {
+    return mobilenumber.length > 0;
   };
 
   return (
-    <div className="modal-backdrop" onClick={onClose}>
-      <div className="modal-container" onClick={(e) => e.stopPropagation()}>
+    <div className="tourism-module-register-container">
+      <div className="tourism-module-form-container">
+        <div className="tourism-module-register-img">
+          <img
+            src="./assets/images/background.jpg"
+            alt="Register"
+            className="tourism-module-image"
+          />
+        </div>
+        <div className="tourism-module-whole-container">
+          <div className="tourism-module-wrap-create">
+            <h2 className="tourism-module-changing-title">Create an account</h2>
+            <Link
+              to="/"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <p className="tourism-module-Go-Home"> Go Home</p>
+            </Link>
+          </div>
+          <p className="tourism-module-subtitle">
+            Already have an account?
+            <span className="tourism-module-link">
+              <a href="/Login">Login</a>
+            </span>
+          </p>
 
-        <div className="register-container">
-          <div className="form-container">
-            <div className="register-img">
-              <img
-                src="./assets/images/background.jpg"
-                alt="Register"
-                className="image"
+          <form className="tourism-module-form" onSubmit={handleRegister}>
+            <div className="tourism-module-input-field">
+              <input
+                type="text"
+                placeholder="First Name"
+                className="tourism-module-input"
+                value={firstname}
+                onChange={(e) => handleNameChange(e, setFirstName)}
+                maxLength={15}
+                required
+              />
+              <input
+                type="text"
+                placeholder="Last Name"
+                className="tourism-module-input"
+                value={lastname}
+                onChange={(e) => handleNameChange(e, setLastName)}
+                maxLength={15}
+                required
+                disabled={!firstname}
               />
             </div>
-            <div className="Whole-container">
-              <div className="wrap-create">
-                <h2 className="changing-title">Create an account</h2>
-                <Link
-                  to="/"
-                  style={{ textDecoration: "none", color: "inherit" }}
-                >
-                  <p className="Go-Home"> Go Home</p>
-                </Link>
-              </div>
-              <p className="subtitle">
-                Already have an account?
-                <span className="link">
-                  <a href="/Login">Login</a>
-                </span>
-              </p>
+            {nameError && <p className="tourism-module-error-message">{nameError}</p>}
 
-              <form className="form" onSubmit={handleRegister}>
-                <div className="input-field">
-                  <input
-                    type="text"
-                    placeholder="First Name"
-                    className="input"
-                    value={firstname}
-                    onChange={(e) => handleNameChange(e, setFirstName)}
-                    maxLength={15}
-                    required
-                  />
-                  <input
-                    type="text"
-                    placeholder="Last Name"
-                    className="input"
-                    value={lastname}
-                    onChange={(e) => handleNameChange(e, setLastName)}
-                    maxLength={15}
-                    required
-                    disabled={!firstname}
-                  />
-                </div>
-                {nameError && <p className="error-message">{nameError}</p>}
-
-                <div className="input-group">
-                  <EmailVerification
-                    email={email}
-                    setEmail={setEmail}
-                    emailVerified={emailVerified}
-                    setEmailVerified={setEmailVerified}
-                    disabled={!lastname}
-                  />
-                </div>
-                <div>
-                  <PhoneInput
-                    type="tel"
-                    country={"in"}
-                    value={phoneNumber}
-                    onChange={handlePhoneChange}
-                    required
-                    disabled={!email}
-                    inputProps={{
-                      name: "phone",
-                      required: true,
-                      autoFocus: true,
-                    }}
-                    placeholder="Enter Phone Number"
-                    className="phone-input"
-                    minLength={10}
-                    maxLength={12}
-                  />
-                  {phoneError && (
-                    <p className="error-message-phone">
-                      {"Phone Number Must be 10 Digits"}
-                    </p>
-                  )}
-                </div>
-                <div className="password-field">
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    placeholder="Password"
-                    className="input"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value.trim())}
-                    disabled={!phoneNumber}
-                    maxLength={15}
-                    minLength={8}
-                  />
-                  <span
-                    className="password-toggle-icon"
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
-                    {showPassword ? <FaEyeSlash /> : <FaEye />}
-                  </span>
-                </div>
-                <div className="password-field">
-                  <input
-                    type={showConfirmPassword ? "text" : "password"}
-                    placeholder="Confirm Password"
-                    className="input"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value.trim())}
-                    disabled={!password}
-                    maxLength={15}
-                    minLength={8}
-                  />
-                  <span
-                    className="password-toggle-icon"
-                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  >
-                    {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
-                  </span>
-                </div>
-                {passwordError && (
-                  <p className="error-message">{passwordError}</p>
-                )}
-
-                <button
-                  type="submit"
-                  className="submit-btn"
-                  disabled={!confirmPassword}
-                >
-                  Register
-                </button>
-                <div className="social-login">
-                  <p className="social-text">Or register with</p>
-                  <button className="social-btn">
-                    <img
-                      src="https://www.svgrepo.com/show/355037/google.svg"
-                      alt="Google"
-                      className="icon"
-                    />
-                    Google
-                  </button>
-                </div>
-              </form>
+            <div className="tourism-module-input-group">
+              <EmailVerification
+                email={email}
+                setEmail={setEmail}
+                emailVerified={emailVerified}
+                setEmailVerified={setEmailVerified}
+                disabled={!lastname}
+              />
             </div>
-          </div>
+            <div>
+              <PhoneInput
+                type="tel"
+                country={"in"}
+                value={mobilenumber}
+                onChange={handlePhoneChange}
+                required
+                disabled={!email}
+                inputProps={{
+                  name: "phone",
+                  required: true,
+                  autoFocus: true,
+                }}
+                placeholder="Enter Phone Number"
+                className="tourism-module-phone-input"
+                minLength={10}
+                maxLength={15}
+              />
+              {phoneError && (
+                <p className="tourism-module-error-message-phone">
+                  {"Phone Number Must be 10 Digits"}
+                </p>
+              )}
+            </div>
+            <div className="tourism-module-password-field">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                className="tourism-module-input"
+                value={password}
+                onChange={(e) => setPassword(e.target.value.trim())}
+                disabled={!mobilenumber}
+                maxLength={15}
+                minLength={8}
+              />
+              <span
+                className="tourism-module-password-toggle-icon"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? < FaEye/> : < FaEyeSlash/>}
+              </span>
+            </div>
+            <div className="tourism-module-password-field">
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                placeholder="Confirm Password"
+                className="tourism-module-input"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value.trim())}
+                disabled={!password}
+                maxLength={15}
+                minLength={8}
+              />
+              <span
+                className="tourism-module-password-toggle-icon"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              >
+                {showConfirmPassword ? < FaEye/> : < FaEyeSlash/>}
+              </span>
+            </div>
+            {passwordError && (
+              <p className="tourism-module-error-message">{passwordError}</p>
+            )}
+
+            <button
+              type="submit"
+              className="tourism-module-submit-btn"
+              disabled={!confirmPassword}
+            >
+              Register
+            </button>
+            <div className="tourism-module-social-login">
+              <p className="tourism-module-social-text">Or register with</p>
+              <button className="tourism-module-social-btn">
+                <img
+                  src="https://www.svgrepo.com/show/355037/google.svg"
+                  alt="Google"
+                  className="tourism-module-icon"
+                />
+                Google
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

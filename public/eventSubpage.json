@@ -1,0 +1,343 @@
+[
+    {
+      "id": "ugadi-celebration",
+      "image": "https://utsav.gov.in/public/uploads/event_picture_image/event_501/16582167301406292907.jpg",
+      "date": "2025-04-09",
+      "name": "Ugadi Celebration",
+      "location": "Vijayawada",
+      "description": "Celebrate the Telugu New Year with traditional rituals, festive meals, and cultural programs in Vijayawada.",
+      "about": {
+        "title": "Ugadi Celebration",
+        "text": "Ugadi, the Telugu New Year, is a vibrant festival marking renewal and prosperity. Families prepare 'Ugadi Pachadi,' a dish symbolizing life's mixed flavors, and decorate homes with mango leaves and rangoli. Cultural programs, including classical dance and music, fill Vijayawada with festive spirit."
+      },
+      "highlights": [
+        {
+          "name": "Panchanga Sravanam",
+          "desc": "Listening to the annual astrological predictions by priests.",
+          "position": "right"
+        },
+        {
+          "name": "Ugadi Pachadi",
+          "desc": "A unique dish made with six flavors, representing life's emotions.",
+          "position": "left"
+        },
+        {
+          "name": "Cultural Performances",
+          "desc": "Traditional dance and music shows in public squares.",
+          "position": "right"
+        },
+        {
+          "name": "Rangoli Competitions",
+          "desc": "Colorful patterns created by locals to adorn homes and streets.",
+          "position": "left"
+        }
+      ],
+      "images": [
+        "https://www.holidify.com/images/compressed/4746.jpg",
+        "https://img.veenaworld.com/wp-content/uploads/2023/03/Ugadi-2023.jpg",
+        "https://www.telugutourism.com/images/festivals/ugadi-festival.jpg",
+        "https://www.festivalsofindia.in/images/ugadi.jpg"
+      ],
+      "upcomingEvents": [
+        {
+          "id": "tirupati-brahmotsavam",
+          "image": "https://www.holidify.com/images/cmsuploads/compressed/Brahmotsavam_20200131114130_20200131114203.jpg",
+          "date": "2025-10-15",
+          "name": "Tirupati Brahmotsavam",
+          "location": "Tirupati"
+        },
+        {
+          "id": "vizag-beach-festival",
+          "image": "https://codito.in/_astro/2023-11-vizag-rushikonda-at-noon.EW1hza0V_Z2qbwwl.webp",
+          "date": "2025-12-26",
+          "name": "Vizag Beach Festival",
+          "location": "Visakhapatnam"
+        }
+      ]
+    },
+    {
+      "id": "tirupati-brahmotsavam",
+      "image": "https://www.holidify.com/images/cmsUploads/compressed/Brahmotsavam_20200131114130_20200131114203.jpg",
+      "date": "2025-10-15",
+      "name": "Tirupati Brahmotsavam",
+      "location": "Tirupati",
+      "description": "A grand religious festival at the Tirumala temple, featuring processions, rituals, and thousands of devotees.",
+      "about": {
+        "title": "Tirupati Brahmotsavam",
+        "text": "Brahmotsavam is a nine-day festival at the Tirumala Venkateswara Temple, celebrating Lord Vishnu. Devotees witness grand chariot processions, floral decorations, and Vedic rituals. The event attracts millions, with Tirupati glowing in spiritual fervor."
+      },
+      "highlights": [
+        {
+          "name": "Garuda Seva",
+          "desc": "A grand procession with the deity on a Garuda vahana.",
+          "position": "right"
+        },
+        {
+          "name": "Rathotsavam",
+          "desc": "The chariot festival where devotees pull the temple chariot.",
+          "position": "left"
+        },
+        {
+          "name": "Vedic Rituals",
+          "desc": "Daily homams and offerings performed by priests.",
+          "position": "right"
+        },
+        {
+          "name": "Temple Decorations",
+          "desc": "Floral and light decorations enhancing the temple's grandeur.",
+          "position": "left"
+        }
+      ],
+      "images": [
+        "https://www.tirumala.org/images/Brahmotsavam1.jpg",
+        "https://www.holidify.com/images/compressed/4750.jpg",
+        "https://tirupatibalaji.ap.gov.in/wp-content/uploads/2023/10/Brahmotsavam.jpg",
+        "https://www.telugutourism.com/images/festivals/brahmotsavam.jpg"
+      ],
+      "upcomingEvents": [
+        {
+          "id": "vizag-beach-festival",
+          "image": "https://codito.in/_astro/2023-11-vizag-rushikonda-at-noon.EW1hza0V_Z2qbwwl.webp",
+          "date": "2025-12-26",
+          "name": "Vizag Beach Festival",
+          "location": "Visakhapatnam"
+        },
+        {
+          "id": "lepakshi-festival",
+          "image": "https://th-i.thgim.com/public/migration_catalog/article14108980.ece/alternates/LANDSCAPE_1200/HYF04LEPAKSHI-1",
+          "date": "2026-02-20",
+          "name": "Lepakshi Festival",
+          "location": "Anantapur"
+        }
+      ]
+    },
+    {
+      "id": "vizag-beach-festival",
+      "image": "https://codito.in/_astro/2023-11-vizag-rushikonda-at-noon.EW1hza0V_Z2qbwwl.webp",
+      "date": "2025-12-26",
+      "name": "Vizag Beach Festival",
+      "location": "Visakhapatnam",
+      "description": "A vibrant celebration by the beach with food stalls, folk performances, music concerts, and sand art displays.",
+      "about": {
+        "title": "Vizag Beach Festival",
+        "text": "Held along the scenic Visakhapatnam coastline, this festival blends music, food, and art. Enjoy live concerts, taste coastal delicacies, and watch sand sculptures come to life under the stars."
+      },
+      "highlights": [
+        {
+          "name": "Live Music",
+          "desc": "Concerts featuring local and national artists.",
+          "position": "right"
+        },
+        {
+          "name": "Sand Art",
+          "desc": "Intricate sculptures created by skilled artists on the beach.",
+          "position": "left"
+        },
+        {
+          "name": "Food Stalls",
+          "desc": "Savor seafood and regional dishes from local vendors.",
+          "position": "right"
+        },
+        {
+          "name": "Folk Dances",
+          "desc": "Traditional performances showcasing Andhra's culture.",
+          "position": "left"
+        }
+      ],
+      "images": [
+        "https://www.vizagtourism.org.in/images/vizag-beach-festival.jpg",
+        "https://www.telugutourism.com/images/festivals/vizag-festival.jpg",
+        "https://vizagcityonline.com/images/beach-festival.jpg",
+        "https://www.holidify.com/images/compressed/4752.jpg"
+      ],
+      "upcomingEvents": [
+        {
+          "id": "lepakshi-festival",
+          "image": "https://th-i.thgim.com/public/migration_catalog/article14108980.ece/alternates/LANDSCAPE_1200/HYF04LEPAKSHI-1",
+          "date": "2026-02-20",
+          "name": "Lepakshi Festival",
+          "location": "Anantapur"
+        },
+        {
+          "id": "rayalaseema-food-festival",
+          "image": "https://media-cdn.tripadvisor.com/media/photo-m/1280/19/bf/5e/84/thali.jpg",
+          "date": "2026-08-05",
+          "name": "Rayalaseema Food Festival",
+          "location": "Kurnool"
+        }
+      ]
+    },
+    {
+      "id": "lepakshi-festival",
+      "image": "https://th-i.thgim.com/public/migration_catalog/article14108980.ece/alternates/LANDSCAPE_1200/HYF04LEPAKSHI-1",
+      "date": "2026-02-20",
+      "name": "Lepakshi Festival",
+      "location": "Anantapur",
+      "description": "A cultural heritage event highlighting Andhra's classical dance, crafts, and the architectural marvel of Lepakshi temple.",
+      "about": {
+        "title": "Lepakshi Festival",
+        "text": "Celebrating the historic Lepakshi temple, this festival showcases classical dance, handicrafts, and temple tours. Visitors explore the iconic Veerabhadra temple and its intricate carvings."
+      },
+      "highlights": [
+        {
+          "name": "Bharatanatyam Performances",
+          "desc": "Classical dance shows by renowned artists.",
+          "position": "right"
+        },
+        {
+          "name": "Craft Stalls",
+          "desc": "Handmade textiles and pottery from local artisans.",
+          "position": "left"
+        },
+        {
+          "name": "Temple Tours",
+          "desc": "Guided tours of Lepakshi's architectural wonders.",
+          "position": "right"
+        },
+        {
+          "name": "Art Exhibitions",
+          "desc": "Showcases of traditional Andhra paintings.",
+          "position": "left"
+        }
+      ],
+      "images": [
+        "https://www.telugutourism.com/images/festivals/lepakshi-festival.jpg",
+        "https://www.holidify.com/images/compressed/4754.jpg",
+        "https://tourism.ap.gov.in/images/lepakshi.jpg",
+        "https://www.anantapur.com/images/lepakshi-temple.jpg"
+      ],
+      "upcomingEvents": [
+        {
+          "id": "rayalaseema-food-festival",
+          "image": "https://media-cdn.tripadvisor.com/media/photo-m/1280/19/bf/5e/84/thali.jpg",
+          "date": "2026-08-05",
+          "name": "Rayalaseema Food Festival",
+          "location": "Kurnool"
+        },
+        {
+          "id": "ugadi-celebration",
+          "image": "https://utsav.gov.in/public/uploads/event_picture_image/event_501/16582167301406292907.jpg",
+          "date": "2026-04-09",
+          "name": "Ugadi Celebration",
+          "location": "Vijayawada"
+        }
+      ]
+    },
+    {
+      "id": "rayalaseema-food-festival",
+      "image": "https://media-cdn.tripadvisor.com/media/photo-m/1280/19/bf/5e/84/thali.jpg",
+      "date": "2026-08-05",
+      "name": "Rayalaseema Food Festival",
+      "location": "Kurnool",
+      "description": "Taste the fiery and flavorful dishes of Rayalaseema with cooking demos, stalls, and folk entertainment.",
+      "about": {
+        "title": "Rayalaseema Food Festival",
+        "text": "This culinary festival in Kurnool celebrates Rayalaseema's spicy cuisine. From gongura pachadi to kandi podi, enjoy authentic dishes, cooking demos, and folk performances."
+      },
+      "highlights": [
+        {
+          "name": "Cooking Demos",
+          "desc": "Live demonstrations of traditional Rayalaseema recipes.",
+          "position": "right"
+        },
+        {
+          "name": "Food Stalls",
+          "desc": "Taste spicy curries, biryanis, and sweets.",
+          "position": "left"
+        },
+        {
+          "name": "Folk Music",
+          "desc": "Performances of regional songs and dances.",
+          "position": "right"
+        },
+        {
+          "name": "Spice Market",
+          "desc": "Buy local spices and condiments used in Rayalaseema cuisine.",
+          "position": "left"
+        }
+      ],
+      "images": [
+        "https://www.telugutourism.com/images/festivals/rayalaseema-food.jpg",
+        "https://www.holidify.com/images/compressed/4756.jpg",
+        "https://www.kurnooltourism.com/images/food-festival.jpg",
+        "https://www.tripadvisor.com/images/rayalaseema-thali.jpg"
+      ],
+      "upcomingEvents": [
+        {
+          "id": "ugadi-celebration",
+          "image": "https://utsav.gov.in/public/uploads/event_picture_image/event_501/16582167301406292907.jpg",
+          "date": "2026-04-09",
+          "name": "Ugadi Celebration",
+          "location": "Vijayawada"
+        },
+        {
+          "id": "tirupati-brahmotsavam",
+          "image": "https://www.holidify.com/images/cmsUploads/compressed/Brahmotsavam_20200131114130_20200131114203.jpg",
+          "date": "2026-10-15",
+          "name": "Tirupati Brahmotsavam",
+          "location": "Tirupati"
+        }
+      ]
+    },
+    {
+      "id": "makara-sankranti",
+      "image": "https://www.holidify.com/images/compressed/4748.jpg",
+      "date": "2026-01-14",
+      "name": "Makara Sankranti",
+      "location": "Andhra Pradesh",
+      "description": "A harvest festival marking the arrival of spring, celebrated with kite flying, rangoli, and traditional rituals across Andhra Pradesh.",
+      "about": {
+        "title": "Makara Sankranti",
+        "text": "Makara Sankranti heralds spring with vibrant celebrations. Homes are adorned with muggu (rangoli) and Gobbemma, while skies fill with colorful kites. Families share sweets like chakkara pongal and engage in joyful kite duels, symbolizing hope and renewal."
+      },
+      "highlights": [
+        {
+          "name": "Bhogi Day",
+          "desc": "Families celebrate with bonfires and communal feasts.",
+          "position": "right"
+        },
+        {
+          "name": "Pongal Day",
+          "desc": "A harvest festival with offerings of freshly harvested rice.",
+          "position": "right"
+        },
+        {
+          "name": "Rooster Fighting",
+          "desc": "Traditional sport in rural areas, showcasing trained roosters.",
+          "position": "left"
+        },
+        {
+          "name": "Rangoli",
+          "desc": "Colorful patterns created with powders and petals.",
+          "position": "left"
+        },
+        {
+          "name": "Cards Playing",
+          "desc": "Family gatherings for card games during festivities.",
+          "position": "right"
+        }
+      ],
+      "images": [
+        "https://www.telugutourism.com/images/festivals/makara-sankranti-kites.jpg",
+        "https://www.holidify.com/images/compressed/4749.jpg",
+        "https://www.festivalsofindia.in/images/sankranti-rangoli.jpg",
+        "https://www.tourism.ap.gov.in/images/sankranti-pongal.jpg"
+      ],
+      "upcomingEvents": [
+        {
+          "id": "ugadi-celebration",
+          "image": "https://utsav.gov.in/public/uploads/event_picture_image/event_501/16582167301406292907.jpg",
+          "date": "2026-04-09",
+          "name": "Ugadi Celebration",
+          "location": "Vijayawada"
+        },
+        {
+          "id": "tirupati-brahmotsavam",
+          "image": "https://www.holidify.com/images/cmsUploads/compressed/Brahmotsavam_20200131114130_20200131114203.jpg",
+          "date": "2026-10-15",
+          "name": "Tirupati Brahmotsavam",
+          "location": "Tirupati"
+        }
+      ]
+    }
+  ]

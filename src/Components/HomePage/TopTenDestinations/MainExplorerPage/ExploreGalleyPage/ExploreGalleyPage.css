@@ -5,6 +5,8 @@
     align-items: center;
     margin-top: 50px;
     gap: 50px;
+    position: relative;
+    top: 10vh;
   }
   
   .explore-gallery-heading {
@@ -31,7 +33,8 @@
   .gallery-map {
     position: relative;
     width: 100%;
-  height: 100%;
+    height: 100%;
+    
   }
   
   .gallery-circle-image {
@@ -66,6 +69,19 @@
     pointer-events: none !important;
     white-space: nowrap !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
-    z-index: 9999 !important;
+    z-index: 1000 !important;
   }
   
+  .explore-gallery-upload-button{
+    color: #fff;
+    background-color: #8b5cf6;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 1000px;
+    
+  }

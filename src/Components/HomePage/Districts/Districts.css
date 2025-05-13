@@ -2,111 +2,174 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 90%;
   height: 100vh;
- padding: 100px;
+  
+  margin: auto;
+  gap: 20px;
+  border-radius: 20px;
+  background-color: transparent;
+
+}
+ 
+.district-title{
+  color:#8B5CF6 ;
+  padding: 20px 0;
 }
 
-  .district-background-image {
+.event-local-treasures-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -10;
+}
+
+.districts-background{
+  position: relative;
+  top: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+ 
+.district-explore-button{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  width: 100%;
+  height: 50px;
+  margin-top: 20px;
+  border-color: #666666;
+}
+ 
+.district-explore-button button{
+  background-color: transparent;
+  font-size: 18px;
+  width: 120px;
+  border-radius: 20px;
+  color: #666666;
+  padding: 5px 10px;
+ 
+}
+ 
+.district-explore-button button:hover{
+  background-color: #8B5CF6;
+  border: none;
+  color: white;
+  cursor: pointer;
+ 
+}
+ 
+/* .district-background-image {
   width: 100%;
   min-height: 120vh;
   object-fit: cover;
   position: absolute;
   z-index: -1;
   opacity: 1;
-}  
-
+} */
+ 
+.district-top-image {
+  width: 100%;
+  height: 200px;
+  border-radius: 5px;
+}
+ 
 .district-map-wrapper {
-  flex: 1;
+  width: 60%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 150px;
+  padding-top: 80px;
+  position: relative;
+ 
+ 
 }
-
+ 
 .district-map {
   width: 100%;
   height: auto;
 }
-
+ 
 .district-info-wrapper {
-  flex: 1;
-  max-width: 600px;
+  width: 40%;
+  max-width: 400px;
   height: 100%;
-  padding: 16px;
+  
 }
-
+ 
 .district-info-card {
   background-color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 16px; 
-  border-radius: 8px; 
- 
+  padding: 16px;
+  border-radius: 8px;
 }
-
+ 
 .district-info-heading {
   font-size: 1.25rem; /* Equivalent to Tailwind's text-xl */
   font-weight: bold; /* Equivalent to Tailwind's font-bold */
   text-align: center; /* Equivalent to Tailwind's text-center */
   margin-bottom: 16px; /* Equivalent to Tailwind's mb-4 */
 }
-
+ 
 .district-info-svg {
   width: 300px;
   height: 300px;
 }
-
+ 
 .district-info-text {
-  margin-top: 16px; 
+  margin-top: 16px;
   color: #1e40af;
 }
-
+ 
 .district-info-button {
-  margin-top: 16px; 
-  background: #2563eb; 
+  margin-top: 16px;
+  background: #2563eb;
   color: white;
-  padding: 8px 16px; 
-  border-radius: 4px; 
+  padding: 8px 16px;
+  border-radius: 4px;
   border: none;
   cursor: pointer;
 }
-
+ 
 .district-info-button:hover {
   background: #1e40af; /* Darker blue for hover effect */
 }
-
-
+ 
 @media (max-width: 1024px) {
   .district-container {
     flex-direction: row;
     height: auto;
   }
-
+ 
   .district-map-wrapper,
   .district-info-wrapper {
     width: 100%;
   }
-
+ 
   .district-info-wrapper {
     max-width: 100%;
   }
-
+ 
   .district-info-card {
     width: 100%;
     box-sizing: border-box;
   }
-
+ 
   .district-info-svg {
     width: 100%;
     height: auto;
   }
-
+ 
   .district-background-image {
     min-height: 100vh;
     object-fit: cover;
   }
 }
+ 
+ 

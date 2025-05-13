@@ -46,7 +46,7 @@
 
 .dot {
   border-radius: 50%;
-  border: 5px solid rgb(27, 26, 26);
+  border: 5px solid rgb(254, 253, 253);
   cursor: pointer;
   background: transparent;
   transition: all 0.3s ease;

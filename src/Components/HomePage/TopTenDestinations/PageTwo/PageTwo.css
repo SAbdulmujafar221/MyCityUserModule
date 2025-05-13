@@ -2,147 +2,143 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-  height: 100vh;
+  color: white;
+  min-height: 100vh; /* Changed from height: 100vh */
   overflow: hidden;
   gap: 50px;
   z-index: 1;
-}
-
-.ten-destinations-heading {
   position: relative;
-  font-size: 32px;
-  font-weight: 700;
-  letter-spacing: 0%;
-  padding: 10px;
-  color: #5a7dfd;
-  z-index: 5;
+  top: 100vh;
+  width: "100%";
   
 }
 
-/* --------naviagtion styling-------- */
-.slider-navigation {
+.tourism-module-background{
+  position: fixed;
+  z-index: -990;
+}
+
+.tourism-background-image{
+  position: fixed;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.4;
+  z-index: -990;
+}
+
+.ten-destinations-heading {
+  font-size: 32px;
+  font-weight: 700;
+  color: #666;
+  z-index: 5;
   position: relative;
+  top: 90px;
+  left: 100px;
+ 
+  width: 100%;
+}
+
+.slider-navigation {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   gap: 10px;
   width: 100%;
   max-width: 1160px;
   z-index: 5;
-  
+  position: relative;
+  width: 100%;
+  right: 60px;
 }
 
 .slider-navigation button {
   width: 37.5px;
   height: 37.5px;
   background-color: rgba(255, 255, 255, 0.8);
-  border: none;
-  font-size: 14px;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: 0.3s;
-  color: #666666;
   border: 1.5px solid #666;
+  border-radius: 50%;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 0.3s;
 }
 
 .slider-navigation button:hover {
   background-color: rgba(255, 255, 255, 1);
 }
 
-/*------- image conatiner styling -------*/
-.page-two-slider-container {
-  position: relative;
-  width: 80%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
+.arrow {
+  font-size: 14px;
+  color: #666;
 }
+
+.page-two-slider-container {
+  width: 84%;
+  max-width: 1160px;
+  display: flex;
+  justify-content: center;
+}
+
 .page-two-image-wrapper {
   display: flex;
-  overflow: hidden;
   width: 100%;
   height: 370px;
   gap: 5px;
-  
 }
 
 .page-two-image-container {
   position: relative;
-  z-index: 5;
-  flex: 1;
-  transition: all 1s ease-in-out;
-  
+
+  border-radius: 20px;
 }
 
-.page-two-image-container img {
-  
-  max-width: 473px;
+.page-two-slider-image {
+  width: 100%;
   height: 370px;
-  border-radius: 20px;
   object-fit: cover;
   cursor: pointer;
-}
-
-.image-container:first-child {
-  position: relative;
-  z-index: 9;
-}
-
-.page-two-slider-image.first-image {
-  transform-origin: center;
-  will-change: transform, opacity;
-}
-
-.image-container:first-child.active .page-two-slider-image {
-  transition: all 0.5s ease-out;
-}
-
-.page-two-slider-image.active {
- 
-  flex: 2;
-  transition: all 5s ease-in-out ;
+  border-radius: 20px;
 }
 
 .page-two-slider-image.inactive {
   width: 100%;
 }
 
-.image-container .image-text {
-  position: absolute;
-  bottom: 10px;
+.page-two-image-container.active {
+  width: 100%;
+}
+
+.top-image-text {
+  position: relative;
+  bottom: 40px;
   left: 10px;
   color: white;
   padding: 5px 10px;
-  border-radius: 5px;
   font-size: 18px;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-  z-index: 5;
-}
-
-.image.active .image-text {
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   opacity: 1;
-}
-
-/* moving image */
-
-.moving-container {
-  position: fixed;
-  top: 293px;
-  right: 350px;
+  transition: opacity 0.5s ease-in-out;
   z-index: 5;
+  
 }
 
-.moving-image {
-  position: relative;
-  width: 473px;
-  height: 370px;
-  transition: transform 0.5s ease-out; /* Smooth movement */
-  border-radius: 20px;
+.top-ten-bg-section {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  opacity: 0.5;
+  z-index: -10;
+}
+
+.top-ten-bg-section img{
+  width: 100%;
+}
+
+.ten-destinations-heading span{
+  color: #000;
 }

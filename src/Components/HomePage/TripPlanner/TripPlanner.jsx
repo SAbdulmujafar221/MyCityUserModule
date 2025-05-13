@@ -44,12 +44,16 @@ const TripPlanner = () => {
           .on("mouseover", (event, d) => {
             d3.select(event.currentTarget).style("fill", "skyblue");
             tooltip.style.display = "block";
-            tooltip.innerHTML = `<strong>${d.properties.NAME}</strong>`;
-          })
-          .on("mousemove", (event) => {
             tooltip.style.left = event.pageX + 10 + "px";
             tooltip.style.top = event.pageY + 10 + "px";
+            tooltip.innerHTML = `<strong>${d.properties.NAME}</strong>`;
+
+            console.log("x = " + event.pageX + "," + "y = " + event.pageY)
           })
+          // .on("mousemove", (event) => {
+          //   tooltip.style.left = event.pageX + 10 + "px";
+          //   tooltip.style.top = event.pageY + 10 + "px";
+          // })
           .on("mouseout", (event) => {
             d3.select(event.currentTarget).style("fill", "white");
             tooltip.style.display = "none";
@@ -99,6 +103,7 @@ const TripPlanner = () => {
           mapLoaded ? "trip-planner-show-cards" : ""
         }`}
       >
+        
         <div className="trip-planner-map-container trip-planner-animated-map">
           <svg id="trip-planner-ap-map" width="100%" height="100%"></svg>
         </div>
@@ -106,7 +111,7 @@ const TripPlanner = () => {
         <div className="trip-planner-cards-container">
           <div className="trip-planner-card trip-planner-transparent-card trip-planner-card1">
             <h2>
-              Trip Planner - Your <br /> Personal Itinerary
+              Plan My Trip - Your <br /> Personal Itinerary
             </h2>
             <p>
               Our trip planner makes your <br /> holiday booking a pleasure.{" "}

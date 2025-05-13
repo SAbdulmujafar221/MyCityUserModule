@@ -1,11 +1,11 @@
 /* src/styles/ImageSlider.css */
 
 .district-slider-container {
-  width: 100%;
+  width: 90%;
   position: relative;
-  top: 10px;
+  top: 10vh;
   height: 300px;
-
+margin-bottom: 50px;
   z-index: 5;
 }
 
@@ -37,14 +37,14 @@
 
 /* Arrow Buttons */
 .arrow-btn {
-  background-color: #ff6b6b;
-  border: none;
-  color: white;
-  width: 50px;
+  background-color: transparent;
+  border: 1px solid #000;
+  color: #000;
+  width: 40px;
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0px 8px rgba(252, 251, 251, 0.4);
   transition: background-color 0.3s;
   display: flex;
   /* margin: 20px; */
@@ -54,7 +54,9 @@
 }
 
 .arrow-btn:hover {
-  background-color: #ff3f3f;
+  background-color: #000;
+  color: #e0d8ef;
+  box-shadow: 0 4px 8px rgba(252, 250, 250, 0.1);
 }
 
 /* Left and Right Arrow Spacing */

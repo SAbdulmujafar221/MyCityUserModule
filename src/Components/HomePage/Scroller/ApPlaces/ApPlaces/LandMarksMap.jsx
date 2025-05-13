@@ -9,7 +9,9 @@ import "./ApPLaces.css";
 import * as topojson from "topojson-client";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import MapComponent from "../NearByPLaces/NearByPlaces";
-import {  useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import BackToHome from "../../../../BackToHome/BackToHome";
+import Footer from "../../../../Footer/Footer";
 const LandmarksMap = () => {
   const [landmarks, setLandmarks] = useState([]);
   const [selectedLandmark, setSelectedLandmark] = useState(
@@ -24,7 +26,7 @@ const LandmarksMap = () => {
     FaRegFlag: FaRegFlag,
     FaUmbrellaBeach: FaUmbrellaBeach,
   };
-const navigate=useNavigate();
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchLandmarks = async () => {
       try {
@@ -114,82 +116,99 @@ const navigate=useNavigate();
   if (error) return <div className="error">Error: {error}</div>;
 
   return (
-    <div className="con">
-      {/* <div>
+    <>
+      <div className="categories-back-home">
+        <BackToHome />
+      </div>
+
+      <div className="con">
+        {/* <div>
         <Link >
           
         </Link>
       </div> */}
 
-      <div>
         <div>
-          <h1 className="back" onClick={() => navigate("/")}>
-            <IoArrowBackCircleOutline className="iconincBack" />
-            Back to Home
-          </h1>
-        </div>
-        <div className="Map-Section-container">
-          <div className="Wrapping-mapping-container">
-            <div className="map-section">
-              <MapContainer
-                center={[15.3, 80.1]}
-                zoom={6.88}
-                style={{ height: "100%", width: "100%" }}
-              >
-                {apBorder && (
-                  <>
-                    <GeoJSON
-                      data={apBorder}
-                      style={{ color: "red", weight: 1 }}
-                    />
-                    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                    {landmarks.map((place) => (
-                      <Marker
-                        key={place.id}
-                        position={[
-                          parseFloat(place.latitude),
-                          parseFloat(place.longitude),
-                        ]}
-                        icon={getLandmarkIcon(
-                          place.map_icon,
-                          place.backgroundColor
-                        )}
-                        eventHandlers={{
-                          click: () => setSelectedLandmark(place),
-                        }}
+          <div>
+            <Link to="/">
+              <h1 className="back" onClick={() => navigate("/")}>
+                <IoArrowBackCircleOutline className="iconincBack" />
+                Back to Home
+              </h1>
+            </Link>
+          </div>
+          <div className="Map-Section-container">
+            <div className="Wrapping-mapping-container">
+              <div className="map-section">
+                <MapContainer
+                  center={[15.3, 80.1]}
+                  zoom={6.88}
+                  style={{ height: "100%", width: "100%" }}
+                >
+                  {apBorder && (
+                    <>
+                      <GeoJSON
+                        data={apBorder}
+                        style={{ color: "red", weight: 1 }}
                       />
-                    ))}
-                  </>
-                )}
-              </MapContainer>
-            </div>
+                      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                      {landmarks.map((place) => (
+                        <Marker
+                          key={place.id}
+                          position={[
+                            parseFloat(place.latitude),
+                            parseFloat(place.longitude),
+                          ]}
+                          icon={getLandmarkIcon(
+                            place.map_icon,
+                            place.backgroundColor
+                          )}
+                          eventHandlers={{
+                            click: () => setSelectedLandmark(place),
+                          }}
+                        />
+                      ))}
+                    </>
+                  )}
+                </MapContainer>
+              </div>
 
-            <div className="data-section">
-              <h2>Landmark Details</h2>
-              <div className="mapping-image-container">
-                {Array.isArray(selectedLandmark?.map_image_path) &&
-                selectedLandmark.map_image_path.length > 0 ? (
-                  selectedLandmark.map_image_path.map((image, index) => (
-                    <img
-                      key={index}
-                      src={image}
-                      alt={`${selectedLandmark.destination_name} ${index + 1}`}
-                      className="landmark-image"
-                      onClick={() => setSelectedLandmark(null)}
-                    />
-                  ))
-                ) : (
-                  <p className="click-info">
-                    Click on a marker to see details here.
-                  </p>
-                )}
+              <div className="data-section">
+                <h2>Landmark Details</h2>
+                <div className="mapping-image-container">
+                  {Array.isArray(selectedLandmark?.map_image_path) &&
+                  selectedLandmark.map_image_path.length > 0 ? (
+                    selectedLandmark.map_image_path.map((image, index) => (
+                      <div className="categories-image-place">
+                      <img
+                        key={index}
+                        src={image}
+                        alt={`${selectedLandmark.destination_name} ${
+                          index + 1
+                        }`}
+                        className="landmark-image"
+                        onClick={() => setSelectedLandmark(null)}
+                      />
+                      <p className="categories-place-names">Place Name</p> 
+                      </div>                   ))
+                  ) : (
+                    <p className="click-info">
+                      Click on a marker to see details here.
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <MapComponent />
-    </div>
+      <div className="map-component-catagory">
+        <MapComponent />
+      </div>
+      <div className="footer-for-page">
+        <Footer />
+      </div>
+    </>
   );
 };
 

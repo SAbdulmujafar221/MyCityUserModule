@@ -7,12 +7,14 @@
     padding: 60px;
     margin: 20px 0px;
     text-align: center;
-    background: white;
+    background: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     border-radius: 20px;
+    position: relative;
+    top: 100vh;
   }
   
   .video-gallery h1 {

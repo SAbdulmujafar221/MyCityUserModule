@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./ImageSlider.css";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa"; // Import icons
+import { FaArrowLeft, FaArrowRight, FaChevronLeft, FaChevronRight } from "react-icons/fa"; // Import icons
 
 
 // array of image URLs
@@ -75,10 +75,10 @@ const DistrictsImageSlider = () => {
       {/* Custom Arrows on Top-Right */}
       <div className="custom-arrows">
         <button onClick={slideLeft} className="arrow-btn left-btn">
-          <FaChevronLeft />
+          <FaArrowLeft />
         </button>
         <button onClick={slideRight} className="arrow-btn right-btn">
-          <FaChevronRight />
+          <FaArrowRight />
         </button>
       </div>
 
