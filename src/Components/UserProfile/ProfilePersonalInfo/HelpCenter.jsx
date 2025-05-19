@@ -1,7 +1,7 @@
 //HELPCENTER JSX
  
 import React, { useState } from 'react';
-import './Helpcenter.css';
+import './HelpCenter.css';
  
 const HelpCenter = () => {
   const [issue, setIssue] = useState('');
