@@ -1,0 +1,32 @@
+
+ 
+.policy-container {
+    display: flex;
+    justify-content: flex-start; /* Push to left */
+    align-items: center;
+    height: 100vh;
+    background-color: #000; /* Black background */
+    padding-left: 100px; /* Add left padding */
+  }
+  
+  .policy-card {
+    background-color: #fff; /* White card */
+    padding: 30px;
+    width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+  }
+  
+  .policy-card h2 {
+    margin-bottom: 40px;
+    margin-right: 398px;
+    font-size: 24px;
+    color: #150808d1;
+  }
+  
+  .policy-card p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    text-align: left;
+  }

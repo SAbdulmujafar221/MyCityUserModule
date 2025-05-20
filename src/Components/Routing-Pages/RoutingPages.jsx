@@ -20,6 +20,9 @@ import ProfilePersonalInfo from "../UserProfile/ProfilePersonalInfo/ProfilePerso
 import ProfileManageAddress from "../UserProfile/ProfilePersonalInfo/ProfileManageAddress";
 import DistrictSubPage from "../HomePage/Districts/DistrictSubPage/DistrictSubPage";
 import ProfileLayout from "../UserProfile/UserProfile";
+import TripHistory from "../UserProfile/ProfilePersonalInfo/TripHistory";
+import HelpCenter from "../UserProfile/ProfilePersonalInfo/HelpCenter";
+import Policy from "../UserProfile/ProfilePersonalInfo/PrivacyPolicy";
 
 const RoutingPages = () => {
   const location = useLocation();
@@ -65,11 +68,20 @@ const RoutingPages = () => {
         <Route path="Explore/Gallery/PhotoUpload" element={<GalleryUpload />} />
 
         <Route path="/Districts" element={<DistrictSubPage />} />
+<Route path="/profile" element={<ProfileLayout />}>
+        <Route
+          path="/profile/personal-info"
+          element={<ProfilePersonalInfo />}
+        />
+        <Route
+          path="/profile/manage-address"
+          element={<ProfileManageAddress />}
+        />
+        <Route path="/profile/trip-history" element={<TripHistory />} />
 
-       
-          <Route path="/profile/personal-info" element={<ProfilePersonalInfo />} />
-          <Route path="/profile/manage-address" element={<ProfileManageAddress />} />
-        
+        <Route path="/profile/help-center" element={<HelpCenter />} />
+        <Route path="/profile/privacy-policy" element={<Policy />} />
+        </Route>
       </Routes>
       {showNavbarAndFooter && showFooter && <Footer />}
     </>
