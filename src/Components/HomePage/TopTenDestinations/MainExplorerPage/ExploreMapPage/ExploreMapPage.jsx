@@ -14,6 +14,9 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 const ExploreMapPage = ({ latitude, longitude, location }) => {
+  // Validate latitude and longitude
+  const isValidLatLng = latitude && longitude && !isNaN(latitude) && !isNaN(longitude);
+
   return (
     <div className="explore-map-page">
       <div className="explore-map-main-container">
@@ -23,19 +26,23 @@ const ExploreMapPage = ({ latitude, longitude, location }) => {
             alt="Beautiful Landscape"
           />
           <div className="explore-map-map-overlay">
-            <MapContainer
-              center={[latitude, longitude]}
-              zoom={7}
-              style={{ height: "100%", width: "100%" }}
-            >
-              <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                attribution="© <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
-              />
-              <Marker position={[latitude, longitude]}>
-                <Popup>{location}</Popup>
-              </Marker>
-            </MapContainer>
+            {isValidLatLng ? (
+              <MapContainer
+                center={[latitude, longitude]}
+                zoom={7}
+                style={{ height: "100%", width: "100%" }}
+              >
+                <TileLayer
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  attribution="© <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+                />
+                <Marker position={[latitude, longitude]}>
+                  <Popup>{location || "Location"}</Popup>
+                </Marker>
+              </MapContainer>
+            ) : (
+              <p>Invalid map coordinates provided.</p>
+            )}
           </div>
         </div>
       </div>

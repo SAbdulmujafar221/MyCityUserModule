@@ -1,14 +1,18 @@
+
+.profile-sidebar-wrapper{
+  display: flex;
+  position: relative;
+  top: 80px;
+  gap: 30px;
+  height: 120vh;
+}
 .profile-sidebar-container {
     width: 300px;
     background-color: #000;
     padding: 20px;
-    border-right: 1px solid #eee;
-    height: 120vh;
     display: flex;
     flex-direction: column;
     font-family: 'Arial', sans-serif;
-    position: relative;
-    top: 80px;
     color: #fff;
   }
  
@@ -78,24 +82,7 @@
     margin-top: 10px;
   }
  
-/* Sidebar.css */
- 
-.profile-sidebar-container {
-    /* Existing styles for the sidebar container, likely including a fixed width */
-  }
-  
-  .profile-sidebar-header {
-    /* Styles for the header */
-  }
-  
-  .profile-sidebar-section {
-    /* Styles for the sections */
-  }
-  
-  .profile-sidebar-link {
-    /* Styles for the links */
-  }
-  
+
   /* New styles for the policy section */
   .policy-section {
     display: flex;
@@ -127,9 +114,7 @@
     /* Styles for the Policy component's card */
   }
  
-.app-container {
-  display: flex;
-}
+
  
 .sidebar-container {
   width: 300px; /* Or whatever your sidebar width is */
@@ -144,9 +129,14 @@
   color: #fff;
 }
  
-.main-content {
-  flex: 1;
-  padding: 20px;
+
+
+.profile-sidebar-content {
+margin: 20px 0;
+width: 72%;
+overflow-y: auto;
+box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 20px;
 }
  
  

@@ -1,36 +1,25 @@
-import React, { useState ,  useRef } from "react";
+import React, { useRef, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./LocalTreasures.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const cardData = [
-  {
-    image: "/assets/images/home-images/img2.jpg",
-    title: "Maredumilli Special Food",
-    description: "Bamboo Chicken",
-  },
-  {
-    image: "/assets/images/home-images/img3.jpg",
-    title: "Sankranti Festival",
-    description: "13 Jan 2023 - 16 Jan 2023, 8:00 AM - 10:00 PM",
-  },
-  {
-    image: "/assets/images/home-images/img4.jpg",
-    title: "Tribal Dance",
-    description: "Evening Folk Performance",
-  },
-  {
-    image: "/assets/images/home-images/img5.jpg",
-    title: "Forest Trail",
-    description: "Guided Nature Walks",
-  },
-];
-
-const LocalTreasures = () => {
+const LocalTreasures = ({ localCuisines }) => {
   const sliderRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Transform localCuisines to match expected structure
+ const transformedCuisines = localCuisines
+  ? localCuisines.map((cuisine) => ({
+      title: cuisine.cuisineName,
+      description: cuisine.description || "A delicious local specialty",
+      images: Array.isArray(cuisine.imageUrl)
+        ? cuisine.imageUrl.map((img) => ({ src: img.imageUrl }))
+        : [],
+    }))
+  : [];
+
 
   const settings = {
     dots: false,
@@ -58,7 +47,7 @@ const LocalTreasures = () => {
     sliderRef.current?.slickPrev();
   };
 
-  const totalSlides = cardData.length;
+  const totalSlides = transformedCuisines.length;
 
   return (
     <div className="local-treasures-wrapper">
@@ -68,6 +57,7 @@ const LocalTreasures = () => {
           backgroundImage: "url('/assets/images/home-images/img1.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
+          zIndex: -1,
         }}
       >
         <div className="local-treasures-overlay" />
@@ -77,19 +67,21 @@ const LocalTreasures = () => {
             <h2>
               Discover
               <br />
-              Maredumilli
+              Local
               <br />
               Iconic Treasures
             </h2>
 
             <div className="slider-indicator-wrapper">
               <div className="slider-track">
-                <div
-                  className="slider-thumb"
-                  style={{
-                    left: `${(currentSlide / (totalSlides - 1)) * 70}%`,
-                  }}
-                />
+                {totalSlides > 0 && (
+                  <div
+                    className="slider-thumb"
+                    style={{
+                      left: `${(currentSlide / (totalSlides - 1)) * 70}%`,
+                    }}
+                  />
+                )}
               </div>
             </div>
 
@@ -105,20 +97,31 @@ const LocalTreasures = () => {
         </div>
 
         <div className="local-treasures-right-section">
-          <Slider ref={sliderRef} {...settings} className="local-treasures-right-slider">
-            {cardData.map((card, index) => (
-              <div className="local-treasures-slider-card">
-              <div className="image-mask-container">
-                <img src={card.image} alt={card.title} />
-                <div className="image-gradient-mask" />
-              </div>
-              <div className="local-treasures-card-content">
-                <h3>{card.title}</h3>
-                <p>{card.description}</p>
-              </div>
-            </div>            
-            ))}
-          </Slider>
+          {transformedCuisines.length > 0 ? (
+            <Slider
+              ref={sliderRef}
+              {...settings}
+              className="local-treasures-right-slider"
+            >
+              {transformedCuisines.map((cuisine, index) => (
+                <div key={index} className="local-treasures-slider-card">
+                  <div className="image-mask-container">
+                    <img
+                      src={cuisine.images[0]?.src || "/assets/fallback.jpg"}
+                      alt={cuisine.title}
+                    />
+                    <div className="image-gradient-mask" />
+                  </div>
+                  <div className="local-treasures-card-content">
+                    <h3>{cuisine.title}</h3>
+                    <p>{cuisine.description}</p>
+                  </div>
+                </div>
+              ))}
+            </Slider>
+          ) : (
+            <p>No local cuisines available.</p>
+          )}
         </div>
       </div>
     </div>

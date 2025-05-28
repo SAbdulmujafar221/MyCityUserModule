@@ -44,7 +44,7 @@ const NavBar = () => {
     try {
       // Call backend logout API
       await axios.post(
-        "https://f5d5-122-166-70-72.ngrok-free.app/client/logout",
+        "https://f2fe-2409-408c-2d98-99a0-1903-834d-cae3-323e.ngrok-free.app/client/logout",
         {},
         { withCredentials: true }
       );

@@ -17,7 +17,7 @@ const Carousel = () => {
     const fetchEvents = async () => {
       try {
         const res = await axios.get(
-          "https://72a3-122-166-70-72.ngrok-free.app/client/event/fetch",
+          "https://7372-122-166-70-72.ngrok-free.app/client/event/fetch",
           {
             headers: {
               "ngrok-skip-browser-warning": "true",

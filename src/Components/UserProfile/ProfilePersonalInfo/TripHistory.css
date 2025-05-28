@@ -9,14 +9,15 @@
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+    width: 100%;
   }
  
   .trip-history-container h1 {
     margin-bottom: 20px;
     color: #333;
     text-align: left;
-    width: 90%;
-    max-width: 650px;
+    width: 100%;
+    
   }
  
   .trip-grid {

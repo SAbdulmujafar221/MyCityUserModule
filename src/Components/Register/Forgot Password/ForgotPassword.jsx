@@ -44,7 +44,7 @@ const ForgotPassword = () => {
 
     try {
       const verifyResponse = await axios.post(
-        "https://f5d5-122-166-70-72.ngrok-free.app/client/forgotpassword/initiate",
+        "https://f2fe-2409-408c-2d98-99a0-1903-834d-cae3-323e.ngrok-free.app/client/forgotpassword/initiate",
         { email },
         {
           headers: {
@@ -63,7 +63,7 @@ const ForgotPassword = () => {
       }
 
       const otpResponse = await axios.post(
-        "https://f5d5-122-166-70-72.ngrok-free.app/client/email/request-otp",
+        "https://f2fe-2409-408c-2d98-99a0-1903-834d-cae3-323e.ngrok-free.app/client/email/request-otp",
         { email },
         {
           headers: {
@@ -117,7 +117,7 @@ const ForgotPassword = () => {
       const otpString = otp.join("");
 
       const response = await axios.post(
-        "https://f5d5-122-166-70-72.ngrok-free.app/client/email/verify-otp",
+        "https://f2fe-2409-408c-2d98-99a0-1903-834d-cae3-323e.ngrok-free.app/client/email/verify-otp",
         { email, otp: otpString },
         { headers: { "Content-Type": "application/json" } }
       );
@@ -151,7 +151,7 @@ const ForgotPassword = () => {
 
     try {
       const response = await axios.post(
-        "https://f5d5-122-166-70-72.ngrok-free.app/client/forgotpassword/reset",
+        "https://f2fe-2409-408c-2d98-99a0-1903-834d-cae3-323e.ngrok-free.app/client/forgotpassword/reset",
         { email ,newPassword },
         { headers: { "Content-Type": "application/json" } },
       );

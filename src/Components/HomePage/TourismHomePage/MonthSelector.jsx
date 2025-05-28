@@ -1,131 +1,151 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./MonthSelector.css";
 
-const months = [
-  "January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December",
-];
-
-// Updated place names (30 total)
-const placeNamesByMonth = {
-  0: ["Tirumala Temple", "Sri Venkateswara Museum", "Silathoranam", "Akasa Ganga", "Papavinasam Theertham"],
-  1: ["Kapila Theertham", "Talakona Waterfalls", "Chandragiri Fort", "Sri Vari Museum", "ISKCON Tirupati"],
-  2: ["Sri Govindarajaswami Temple", "Sri Padmavathi Ammavari Temple", "Sri Kalyana Venkateswara Swamy Temple", "Regional Science Centre", "Deer Park Tirupati"],
-  3: ["Japali Teertham", "Tumburu Teertham", "Sri Venkateswara Zoological Park", "Sri Venugopala Swamy Temple", "Srinivasa Mangapuram"],
-  4: ["Kalyani Dam", "Tirupati Rock Garden", "Sri Prasanna Venkateswara Swamy Temple", "Asthana Mandapam", "TTD Gardens"],
-  5: ["Sri Bedi Anjaneyaswami Temple", "Sri Varahaswami Temple", "Alamelu Mangapuram", "Sri Kodandarama Swamy Temple", "Tirupati View Point"]
-};
-
-const MonthSelector = ({ selectedMonth, onMonthChange }) => {
-  const containerRef = useRef(null);
-  const isProgrammaticScroll = useRef(false);
-  const [currentPlaceIndex, setCurrentPlaceIndex] = useState(0);
+const MonthSelector = ({
+  months,
+  selectedMonth,
+  onMonthChange,
+  currentPlaceName,
+  monthData,
+  currentPlaceIndex,
+  onPlaceChange,
+}) => {
   const [typedText, setTypedText] = useState("");
+  const typingIntervalRef = useRef(null);
+  const monthListRef = useRef(null);
+  const timelineRef = useRef(null);
 
-  const extendedMonths = [...months, ...months, ...months];
-
-  // Scroll selected month into view
+  // Typing animation for place name
   useEffect(() => {
-    const container = containerRef.current;
-    const itemHeight = container.offsetHeight / 5;
-    const selectedIndex = selectedMonth + months.length;
-    const scrollOffset = selectedIndex * itemHeight - (container.offsetHeight - itemHeight) / 2;
+    if (!currentPlaceName) {
+      setTypedText("");
+      return;
+    }
 
-    isProgrammaticScroll.current = true;
-    container.scrollTo({
-      top: scrollOffset,
-      behavior: "smooth",
-    });
-  }, [selectedMonth]);
+    setTypedText("");
+    let index = 0;
 
-  // Loop scroll logic
-  useEffect(() => {
-    const container = containerRef.current;
-    const handleScroll = () => {
-      if (isProgrammaticScroll.current) {
-        isProgrammaticScroll.current = false;
-        return;
+    typingIntervalRef.current = setInterval(() => {
+      setTypedText((prev) => prev + currentPlaceName.charAt(index));
+      index++;
+      if (index >= currentPlaceName.length) {
+        clearInterval(typingIntervalRef.current);
       }
+    }, 400);
 
-      const itemHeight = container.offsetHeight / 5;
-      const scrollTop = container.scrollTop;
-      const middleSetOffset = months.length * itemHeight;
+    return () => clearInterval(typingIntervalRef.current);
+  }, [currentPlaceName]);
 
-      if (scrollTop < middleSetOffset - itemHeight) {
-        isProgrammaticScroll.current = true;
-        container.scrollTop = scrollTop + months.length * itemHeight;
-      } else if (scrollTop > middleSetOffset + months.length * itemHeight - itemHeight) {
-        isProgrammaticScroll.current = true;
-        container.scrollTop = scrollTop - months.length * itemHeight;
-      }
-    };
-
-    container.addEventListener("scroll", handleScroll);
-    return () => container.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Update place every 20 seconds
+  // Auto-advance places every 10 seconds
   useEffect(() => {
+    if (!monthData || !monthData.videos || monthData.videos.length === 0) return;
+
     const interval = setInterval(() => {
-      setCurrentPlaceIndex((prev) => {
-        const next = (prev + 1) % 30;
-        const nextMonth = Math.floor(next / 5);
-        onMonthChange(nextMonth);
-        return next;
-      });
-    }, 20000); // 20 seconds
+      const nextPlace = (currentPlaceIndex + 1) % monthData.videos.length;
+      onPlaceChange(nextPlace);
+    }, 10000);
 
     return () => clearInterval(interval);
-  }, [onMonthChange]);
+  }, [currentPlaceIndex, monthData, onPlaceChange]);
 
-  // Typing animation effect
+  // Scroll to center the active month
   useEffect(() => {
-    const month = Math.floor(currentPlaceIndex / 5);
-    const place = placeNamesByMonth[month][currentPlaceIndex % 5];
+    if (monthListRef.current && timelineRef.current) {
+      const monthHeight = monthListRef.current.clientHeight / 5; // Height of one month item (5 visible)
+      const scrollPosition = (selectedMonth - 2) * monthHeight; // Center the active month
+      monthListRef.current.scrollTo({
+        top: scrollPosition,
+        behavior: "smooth",
+      });
 
-    let index = -1;
-    setTypedText(""); // Reset text
+      // Scroll timeline to center active month’s dot
+      const dotHeight = timelineRef.current.clientHeight / months.length;
+      const dotPosition = selectedMonth * dotHeight;
+      timelineRef.current.scrollTo({
+        top: dotPosition - timelineRef.current.clientHeight / 2 + dotHeight / 2,
+        behavior: "smooth",
+      });
+    }
+  }, [selectedMonth, months.length]);
 
-    const typingInterval = setInterval(() => {
-      setTypedText((prev) => prev + place.charAt(index));
-      index++;
-      if (index >= place.length) clearInterval(typingInterval);
-    }, 100); // Typing speed
+  // Handle mouse wheel scrolling
+  const handleWheelScroll = (e) => {
+    e.preventDefault(); // Prevent default scroll
+    const delta = e.deltaY;
+    let newMonth = selectedMonth;
 
-    return () => clearInterval(typingInterval);
-  }, [currentPlaceIndex]);
+    if (delta > 0) {
+      // Scroll down: next month
+      newMonth = (selectedMonth + 1) % months.length;
+    } else if (delta < 0) {
+      // Scroll up: previous month
+      newMonth = (selectedMonth - 1 + months.length) % months.length;
+    }
 
-  const handleMonthClick = (index) => {
-    const newMonth = index % months.length;
     onMonthChange(newMonth);
-    setCurrentPlaceIndex(newMonth * 5); // Reset to first place in that month
   };
+
+  // Calculate visible months (5 at a time, centered on selectedMonth)
+  const getVisibleMonths = () => {
+    const totalMonths = months.length;
+    const half = Math.floor(5 / 2); // 2 months before and after
+    let start = selectedMonth - half;
+    let end = selectedMonth + half + 1;
+
+    // Handle wrapping for looping
+    if (start < 0) {
+      start += totalMonths;
+      end += totalMonths;
+    } else if (end > totalMonths) {
+      start -= totalMonths;
+      end -= totalMonths;
+    }
+
+    const visibleIndices = [];
+    for (let i = start; i < end; i++) {
+      const index = (i + totalMonths) % totalMonths; // Ensure positive index
+      visibleIndices.push(index);
+    }
+    return visibleIndices;
+  };
+
+  const visibleMonthIndices = getVisibleMonths();
 
   return (
     <div className="month-selector-wrapper">
       <div className="month-selector-container">
-        <div className="month-list" ref={containerRef}>
-          {extendedMonths.map((month, index) => (
+        <div
+          className="months-list"
+          ref={monthListRef}
+          onWheel={handleWheelScroll}
+        >
+          {visibleMonthIndices.map((idx) => (
             <div
-              key={index}
-              className={`month-item ${selectedMonth === index % months.length ? "active" : ""}`}
-              onClick={() => handleMonthClick(index)}
+              key={months[idx]}
+              className={`month-item ${idx === selectedMonth ? "active" : ""}`}
+              onClick={() => onMonthChange(idx)}
             >
-              <span>{month}</span>
+              {months[idx].toUpperCase()}
             </div>
           ))}
         </div>
-        <div className="vertical-timeline">
-          {months.map((_, index) => (
-            <div key={index} className="timeline-segment" />
+        <div className="vertical-timeline" ref={timelineRef}>
+          {months.map((_, idx) => (
+            <div
+              key={idx}
+              className="timeline-segment"
+              onClick={() => onMonthChange(idx)}
+            >
+              {idx === selectedMonth && (
+                <div className="timeline-dot active" />
+              )}
+            </div>
           ))}
-          <div className="timeline-dot" style={{ top: `calc(${selectedMonth * (100 / 12)}% + 8px)` }} />
         </div>
       </div>
 
-      {/* Typing animation in bottom-left */}
-      <div className="place-name-bottom-left">
-        <span className="typing-text">{typedText}</span>
+      <div className="place-name-display">
+        {typedText || "No place selected"}
       </div>
     </div>
   );

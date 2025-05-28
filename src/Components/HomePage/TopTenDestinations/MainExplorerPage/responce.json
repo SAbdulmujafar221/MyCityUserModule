@@ -1,0 +1,95 @@
+{
+    "sections": [
+        {
+            "data": {
+                "about": {
+                    "placeId": 1,
+                    "name": "Tirumala",
+                    "about": "Tirumala is a sacred hill town located in the Tirupati district of the Indian state of Andhra Pradesh. It is renowned as the home of the Tirumala Venkateswara Temple, one of the most visited and richest Hindu temples in the world. Pilgrims from across India and the globe come here to worship Lord Venkateswara (a form of Vishnu).",
+                    "history": "The Tirumala Temple has been a revered pilgrimage site since ancient times, with inscriptions dating back to 9th century CE during the reign of the Tamil Chola dynasty.",
+                    "openingTime": "10:00:00",
+                    "cloingTime": "18:00:00",
+                    "latitude": 13.6795235,
+                    "longitude": 79.3497522,
+                    "rating": 5.0,
+                    "placeRelatedImages": [
+                        {
+                            "imageUrl": "http://res.cloudinary.com/dksnzchlj/image/upload/v1746695354/Events/ai6mujtg8wwdfow1uujc.jpg",
+                            "imageName": "placeimagemain"
+                        },
+                        {
+                            "imageUrl": "http://res.cloudinary.com/dksnzchlj/image/upload/v1746695353/Events/use4v2yxom0jvefyxfgc.jpg",
+                            "imageName": "cuisineimagepesarattu"
+                        },
+                        {
+                            "imageUrl": "http://res.cloudinary.com/dksnzchlj/image/upload/v1746695354/Events/qs9l9h8lrbpgfjfpr13g.jpg",
+                            "imageName": "placeimageentrance"
+                        },
+                        {
+                            "imageUrl": "http://res.cloudinary.com/dksnzchlj/image/upload/v1746695354/Events/sm4cuykmpihtxxrgxx4f.jpg",
+                            "imageName": "chepala pulusu"
+                        }
+                    ],
+                    "reviews": [
+                        {
+                            "placeName": "Tirumala",
+                            "userName": "RAJESHRAYUDU",
+                            "reviewDescription": "Good Place To Visit",
+                            "imageUrl": "http://res.cloudinary.com/dksnzchlj/image/upload/v1746767584/Events/ndwasvveoqbcoz2rqyil.jpg",
+                            "postedOn": "2025-05-09"
+                        }
+                    ],
+                    "localCuisines": [
+                        {
+                            "cuisineName": "pesarattu",
+                            "imageUrl": [
+                                {
+                                    "imageUrl": "http://res.cloudinary.com/dksnzchlj/image/upload/v1746695354/Events/ai6mujtg8wwdfow1uujc.jpg",
+                                    "imageName": "placeimagemain"
+                                },
+                                {
+                                    "imageUrl": "http://res.cloudinary.com/dksnzchlj/image/upload/v1746695353/Events/use4v2yxom0jvefyxfgc.jpg",
+                                    "imageName": "cuisineimagepesarattu"
+                                },
+                                {
+                                    "imageUrl": "http://res.cloudinary.com/dksnzchlj/image/upload/v1746695354/Events/qs9l9h8lrbpgfjfpr13g.jpg",
+                                    "imageName": "placeimageentrance"
+                                },
+                                {
+                                    "imageUrl": "http://res.cloudinary.com/dksnzchlj/image/upload/v1746695354/Events/sm4cuykmpihtxxrgxx4f.jpg",
+                                    "imageName": "chepala pulusu"
+                                }
+                            ]
+                        },
+                        {
+                            "cuisineName": "chepala pulusu",
+                            "imageUrl": [
+                                {
+                                    "imageUrl": "http://res.cloudinary.com/dksnzchlj/image/upload/v1746695354/Events/ai6mujtg8wwdfow1uujc.jpg",
+                                    "imageName": "placeimagemain"
+                                },
+                                {
+                                    "imageUrl": "http://res.cloudinary.com/dksnzchlj/image/upload/v1746695353/Events/use4v2yxom0jvefyxfgc.jpg",
+                                    "imageName": "cuisineimagepesarattu"
+                                },
+                                {
+                                    "imageUrl": "http://res.cloudinary.com/dksnzchlj/image/upload/v1746695354/Events/qs9l9h8lrbpgfjfpr13g.jpg",
+                                    "imageName": "placeimageentrance"
+                                },
+                                {
+                                    "imageUrl": "http://res.cloudinary.com/dksnzchlj/image/upload/v1746695354/Events/sm4cuykmpihtxxrgxx4f.jpg",
+                                    "imageName": "chepala pulusu"
+                                }
+                            ]
+                        }
+                    ],
+                    "nearByPlaces": [],
+                    "events": null
+                }
+            },
+            "sectionId": "aboutAndMap",
+            "title": "About and Map"
+        }
+    ]
+}
+ 

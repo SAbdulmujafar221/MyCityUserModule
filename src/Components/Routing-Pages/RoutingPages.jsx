@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import HomePage from "../Pages/HomePage";
 import RegisterPage from "../Register/Register";
 import SignInPage from "../Register/Login/Signin";
 import ForgotPassword from "../Register/Forgot Password/ForgotPassword";
-import LandmarksMap from "../HomePage/Scroller/ApPlaces/ApPlaces/LandMarksMap";
 import Navbar from "../NavBar/Navbar";
 import MainExplorePage from "../HomePage/TopTenDestinations/MainExplorerPage/MainExplorePage";
 import FullMap from "../HomePage/TripPlanner/FullMap/FullMap";
@@ -12,7 +11,6 @@ import CulturalEvents from "../HomePage/Events/CulturalEvents/CulturalEvents/Cul
 import CabSectionMainPage from "../Cabs/CabSectionMainPage/CabSectionMainPage";
 import PageTwo from "../HomePage/TopTenDestinations/PageTwo/PageTwo";
 import Footer from "../Footer/Footer";
-
 import UserReview from "../UserReview/UserReview";
 import GalleryUpload from "../HomePage/TopTenDestinations/MainExplorerPage/ExploreGalleyPage/GalleryUploadPage/GalleryUploadPage";
 import ProfilePage from "../UserProfile/UserProfile";
@@ -23,6 +21,7 @@ import ProfileLayout from "../UserProfile/UserProfile";
 import TripHistory from "../UserProfile/ProfilePersonalInfo/TripHistory";
 import HelpCenter from "../UserProfile/ProfilePersonalInfo/HelpCenter";
 import Policy from "../UserProfile/ProfilePersonalInfo/PrivacyPolicy";
+import UserProfile from "../UserProfile/UserProfile";
 
 const RoutingPages = () => {
   const location = useLocation();
@@ -31,7 +30,6 @@ const RoutingPages = () => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
-  // Routes where both Navbar and Footer should be hidden
   const hiddenRoutes = [
     "/login",
     "/Register",
@@ -42,11 +40,11 @@ const RoutingPages = () => {
     "/profile/personal-info",
     "/profile/manage-address",
     "/event/:id",
+    
   ];
 
-  const hideFooter = ["/CategoriesExplore", "/event/:id"];
+  const hideFooter = ["/CategoriesExplore", "/event/:id" ];
 
-  // Determine if Navbar and Footer should be shown
   const showNavbarAndFooter = !hiddenRoutes.includes(location.pathname);
   const showFooter = !hideFooter.includes(location.pathname);
 
@@ -59,29 +57,14 @@ const RoutingPages = () => {
         <Route path="/login" element={<SignInPage />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/CabSection" element={<CabSectionMainPage />} />
-        <Route path="/MainExplorePlorer/:slug" element={<MainExplorePage />} />
+        <Route path="/MainExplore/:placeId" element={<MainExplorePage />} />
         <Route path="/event/:id" element={<CulturalEvents />} />
-        <Route path="/CategoriesExplore" element={<LandmarksMap />} />
         <Route path="/SubTripPlanner" element={<FullMap />} />
         <Route path="/PageTwo" element={<PageTwo />} />
         <Route path="/UserReview" element={<UserReview />} />
-        <Route path="Explore/Gallery/PhotoUpload" element={<GalleryUpload />} />
-
+        <Route path="/Explore/Gallery/PhotoUpload" element={<GalleryUpload />} />
         <Route path="/Districts" element={<DistrictSubPage />} />
-<Route path="/profile" element={<ProfileLayout />}>
-        <Route
-          path="/profile/personal-info"
-          element={<ProfilePersonalInfo />}
-        />
-        <Route
-          path="/profile/manage-address"
-          element={<ProfileManageAddress />}
-        />
-        <Route path="/profile/trip-history" element={<TripHistory />} />
-
-        <Route path="/profile/help-center" element={<HelpCenter />} />
-        <Route path="/profile/privacy-policy" element={<Policy />} />
-        </Route>
+        <Route path="/profile" element={<UserProfile />} />
       </Routes>
       {showNavbarAndFooter && showFooter && <Footer />}
     </>

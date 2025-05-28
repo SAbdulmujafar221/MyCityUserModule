@@ -1,15 +1,13 @@
-.categories-container{
+ .categories-container{
   position: relative;
   padding: 20px;
   color: white;
   overflow: hidden;
   top: 100vh;
- 
-
 }
 
 .categories-header{
-  color: #000;
+  color: #ffff;
   padding: 10px;
   display: flex;
   justify-content: center;
@@ -109,19 +107,19 @@
   
   
   
-  /* Grid size variations */
+ 
   .item1 { grid-column: span 1; grid-row: span 1; }
-  .item2 { grid-column: span 1; grid-row: span 2; }
-  .item3 { grid-column: span 1; grid-row: span 3; }
-  .item4 { grid-column: span 1; grid-row: span 1; }
-  .item5 { grid-column: span 1; grid-row: span 2; }
+  .item7 { grid-column: span 1; grid-row: span 2; }
+  .item6{ grid-column: span 1; grid-row: span 3; }
+  .placeId { grid-column: span 1; grid-row: span 1; }
+  .item15 { grid-column: span 1; grid-row: span 2; }
   .item6 { grid-column: span 1; grid-row: span 2; }
   .item7 { grid-column: span 1; grid-row: span 3; }
   .item8 { grid-column: span 1; grid-row: span 2; }
-  .item9 { grid-column: span 1; grid-row: span 2; }  
+  .placeId { grid-column: span 1; grid-row: span 2; }  
   .item10 { grid-column: span 1; grid-row: span 2; }
 
-  /* Background image for hovered category */
+
 .categories-container {
   background-size: cover;
   background-position: center;
@@ -136,4 +134,4 @@
 .categories-grid-container {
   position: relative;
   z-index: 2;
-}
+} 

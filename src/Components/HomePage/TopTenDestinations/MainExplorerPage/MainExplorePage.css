@@ -1,8 +1,11 @@
+
+
 /* ImageSlider.css */
 .main-explore-page-slider-container {
   position: relative;
   width: 100%;
   height: 100vh;
+  top: 80px;
 }
 
 .main-explore-page-slide {
@@ -60,4 +63,9 @@
 .dot.inactive {
   width: 18px;
   height: 18px;
+}
+
+.main-explore-page{
+  position: relative;
+  top: 80px;
 }

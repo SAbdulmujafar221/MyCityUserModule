@@ -32,7 +32,7 @@
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
-  z-index: 1;
+  z-index: -10;
 }
 
 .local-treasures-left-content {

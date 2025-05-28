@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
@@ -12,19 +12,18 @@ const tourismBackground = "/assets/tourismbg.jpg";
 const PageTwo = () => {
   const [startIndex, setStartIndex] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
-  const sectionRef = useRef(null);
   const [places, setPlaces] = useState([]);
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     const fetchPlaces = async () => {
       try {
         const res = await axios.get(
-          "https://383b-122-166-70-72.ngrok-free.app/client/discovery/getall",
+          "https://86df-223-196-169-250.ngrok-free.app/client/discovery/getall",
           {
             headers: {
               "ngrok-skip-browser-warning": "true",
             },
-            withCredentials: true,
           }
         );
         console.log("API Response:", res.data);
@@ -97,13 +96,13 @@ const PageTwo = () => {
                   transition: { duration: 0.5, ease: "easeInOut" },
                 }}
               >
-                <Link to={`/MainExplorePlorer/${place.placeId}`}>
-
-
+                <Link to={`/MainExplore/${encodeURIComponent(place.placeId)}`}>
                   <motion.img
                     src={
                       (place.placeRelatedImages &&
                         place.placeRelatedImages.length > 0 &&
+                        place.placeRelatedImages[0].imageUrl !==
+                          "Media service is currently unavailable" &&
                         place.placeRelatedImages[0].imageUrl) ||
                       "/assets/fallback.jpg"
                     }

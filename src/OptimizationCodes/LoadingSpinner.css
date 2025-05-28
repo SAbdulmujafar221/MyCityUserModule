@@ -1,0 +1,37 @@
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.loading-spinner.small {
+  width: 50px;
+  height: 50px;
+}
+
+.loading-spinner.medium {
+  width: 100px;
+  height: 100px;
+}
+
+.loading-spinner.large {
+  width: 200px;
+  height: 200px;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #ff5733; /* Adjust color to match your theme */
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

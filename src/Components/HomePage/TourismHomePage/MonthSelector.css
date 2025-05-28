@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+ 
 }
 
 .month-selector-container {
@@ -17,7 +18,9 @@
   width: 200px;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   z-index: 10;
+   background-color: red;
 }
 
 .month-list {
@@ -58,7 +61,7 @@
   width: 4px;
   height: 100%;
   position: relative;
-  margin-left: 10px;
+  margin-right: 10px;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -83,7 +86,7 @@
 }
 
 /* Typing animation bottom-left */
-.place-name-bottom-left {
+.place-name-display {
   position: absolute;
   bottom: 40px;
   left: 40px;

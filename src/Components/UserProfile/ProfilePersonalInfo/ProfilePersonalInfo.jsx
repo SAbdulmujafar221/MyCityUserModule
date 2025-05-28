@@ -11,7 +11,7 @@ const ProfilePersonalInfo = () => {
         const fetchUserData = async () => {
           try {
             const response = await axios.get(
-              "https://f5d5-122-166-70-72.ngrok-free.app/client/profile/user",
+              "https://f2fe-2409-408c-2d98-99a0-1903-834d-cae3-323e.ngrok-free.app/client/profile/user",
               {
                 withCredentials: true,
                 headers: {

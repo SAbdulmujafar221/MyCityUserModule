@@ -83,7 +83,7 @@ const RegisterPage = () => {
 
     try {
       const response = await axios.post(
-        "https://8b21-122-166-70-72.ngrok-free.app/client/register/user",
+        "https://f2fe-2409-408c-2d98-99a0-1903-834d-cae3-323e.ngrok-free.app/client/register/user",
         payload
       );
       console.log("Server response:", response);

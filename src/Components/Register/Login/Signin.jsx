@@ -24,7 +24,7 @@ const SignInPage = () => {
     const checkAuth = async () => {
       try {
         const response = await axios.get(
-          "https://f5d5-122-166-70-72.ngrok-free.app/client/check-auth",
+          "https://f2fe-2409-408c-2d98-99a0-1903-834d-cae3-323e.ngrok-free.app/client/check-auth",
           { withCredentials: true }
         );
         if (response.status === 200) {
@@ -64,7 +64,7 @@ const SignInPage = () => {
 
     try {
       const response = await axios.post(
-        "https://f5d5-122-166-70-72.ngrok-free.app/client/login/user",
+        "https://f2fe-2409-408c-2d98-99a0-1903-834d-cae3-323e.ngrok-free.app/client/login/user",
         { email, password },
         { withCredentials: true }
       );

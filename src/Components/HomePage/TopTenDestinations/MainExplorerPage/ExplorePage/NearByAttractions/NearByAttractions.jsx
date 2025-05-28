@@ -4,8 +4,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./NearByAttractions.css";
 
-const NearByAttractions = ({ nearByPlaces }) => {
+const NearByAttractions = ({ nearByPlaces , images }) => {
   const sliderRef = useRef(null);
+
+    const NearByAttractionsBackGround =
+    images && images.length > 0
+      ? images[2].src
+      : "https://via.placeholder.com/600x400?text=About+Image";
 
   const settings = {
     infinite: true,
@@ -23,8 +28,6 @@ const NearByAttractions = ({ nearByPlaces }) => {
     ],
   };
 
-  const NearByAttractionsBackGround =
-    "https://via.placeholder.com/1200x400?text=Nearby+Attractions";
 
   return (
     <div className="NearByAttraction-container">
@@ -55,10 +58,10 @@ const NearByAttractions = ({ nearByPlaces }) => {
           </p>
         </div>
 
-        {nearByPlaces.length > 0 ? (
+        {nearByPlaces && nearByPlaces.length > 0 ? (
           <Slider ref={sliderRef} {...settings}>
-            {nearByPlaces.map((place, index) => (
-              <div key={index} className="explore-near-slide">
+            {nearByPlaces.map((place) => (
+              <div key={place.placeId} className="explore-near-slide">
                 <img
                   src={place.image}
                   alt={place.imageAlt}

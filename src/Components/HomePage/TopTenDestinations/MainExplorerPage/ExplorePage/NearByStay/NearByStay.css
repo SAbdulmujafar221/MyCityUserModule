@@ -12,9 +12,16 @@
     flex-direction: column;
   }
 
-  .NearbyStayBack{
+  /* .NearbyStayBack{
     
     transform: scaleX(-1);
     width: 100%;
     margin-bottom: 100px;
+  } */
+
+  .NearByAttraction-container img {
+    width: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: -2;
   }

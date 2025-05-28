@@ -3,16 +3,16 @@
 .policy-container {
     display: flex;
     justify-content: flex-start; /* Push to left */
-    align-items: center;
+    
     height: 100vh;
-    background-color: #000; /* Black background */
-    padding-left: 100px; /* Add left padding */
+    background-color: #fff; /* Black background */
+    /* Add left padding */
   }
   
   .policy-card {
     background-color: #fff; /* White card */
     padding: 30px;
-    width: 600px;
+    width: 100%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
   }

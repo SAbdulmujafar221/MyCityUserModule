@@ -1,0 +1,16 @@
+.user-profile-layout-container {
+  display: flex;
+}
+
+.user-profile-content {
+ 
+ 
+
+  
+}
+
+ .user-footer{
+  position: relative;
+  top: -86.5vh;
+  z-index: -10;
+} 

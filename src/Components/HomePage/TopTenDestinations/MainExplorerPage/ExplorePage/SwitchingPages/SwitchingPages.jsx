@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import ExploreAboutPage from "../../ExploreAboutPage/ExploreAboutPage";
-import ExploreMapPage from "../../ExploreMapPage/ExploreMapPage";
-
+import React, { useState, lazy, Suspense } from "react";
 import "./SwitchingPages.css";
-import ExploreGalleryPage from "../../ExploreGalleyPage/ExploreGalleyPage";
+import LoadingSpinner from "../../../../../../OptimizationCodes/LoadingSpinner";
+
+const ExploreAboutPage = lazy(() => import("../../ExploreAboutPage/ExploreAboutPage"));
+const ExploreMapPage = lazy(() => import("../../ExploreMapPage/ExploreMapPage"));
+const ExploreGalleryPage = lazy(() => import("../../ExploreGalleyPage/ExploreGalleyPage"));
 
 const SwitchingPage = ({ about, images, location }) => {
   const [activeComponent, setActiveComponent] = useState("about");
@@ -22,33 +23,43 @@ const SwitchingPage = ({ about, images, location }) => {
         ))}
       </div>
 
-      <div className="explore-switched-components-container">
-        <div
-          className={`explore-component-transition ${
-            activeComponent === "about" ? "active" : ""
-          }`}
-        >
-          {activeComponent === "about" && <ExploreAboutPage about={about} />}
+      <Suspense fallback={<LoadingSpinner size="medium" />}>
+        <div className="explore-switched-components-container">
+          <div
+            className={`explore-component-transition ${
+              activeComponent === "about" ? "active" : ""
+            }`}
+          >
+            {activeComponent === "about" && about && (
+              <ExploreAboutPage about={about} images={images} />
+            )}
+          </div>
+          <div
+            className={`explore-component-transition ${
+              activeComponent === "map" ? "active" : ""
+            }`}
+          >
+            {activeComponent === "map" && about && (
+              <ExploreMapPage
+                latitude={about.latitude}
+                longitude={about.longitude}
+                location={location}
+              />
+            )}
+          </div>
+          <div
+            className={`explore-component-transition ${
+              activeComponent === "gallery" ? "active" : ""
+            }`}
+          >
+            {activeComponent === "gallery" && images && (
+              <ExploreGalleryPage images={images} />
+            )}
+          </div>
         </div>
-        <div
-          className={`explore-component-transition ${
-            activeComponent === "map" ? "active" : ""
-          }`}
-        >
-          {activeComponent === "map" && (
-            <ExploreMapPage latitude={about.latitude} longitude={about.longitude} location={location} />
-          )}
-        </div>
-        <div
-          className={`explore-component-transition ${
-            activeComponent === "gallery" ? "active" : ""
-          }`}
-        >
-          {activeComponent === "gallery" && <ExploreGalleryPage images={images} />}
-        </div>
-      </div>
+      </Suspense>
     </div>
   );
 };
 
-export default SwitchingPage;
+export default React.memo(SwitchingPage);

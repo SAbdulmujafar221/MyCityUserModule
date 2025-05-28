@@ -19,7 +19,7 @@ const exploreStayImages = [
   },
 ];
 
-const NearByStay = () => {
+const NearByStay = (images) => {
   const swiperRef = useRef(null);
 
   const settings = {
@@ -30,12 +30,16 @@ const NearByStay = () => {
     pauseOnHover: false, // Prevent pausing on hover
   };
 
-  const NearByAttractionsBackGround =
-    "./assets/images/ExploreImages/explorebg3.jpeg";
+   const NearByStayBackGround =
+    images && images.length > 0
+      ? images[0].src
+      : "https://via.placeholder.com/600x400?text=About+Image";
+ 
+ 
   return (
     <div className="NearByAttraction-container">
       <img
-        src={NearByAttractionsBackGround}
+        src={NearByStayBackGround }
         alt="Loading...."
         className="NearbyStayBack"
         
